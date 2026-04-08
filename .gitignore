@@ -1,0 +1,16 @@
+# macOS
+.DS_Store
+
+# Node modules (if ever used)
+node_modules/
+
+# Logs
+*.log
+
+# Build output
+dist/
+build/
+
+# Editor files
+*.swp
+*~
