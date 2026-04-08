@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LA CELLULE - Ton corps de rêve en 15 minutes par jour</title>
+    <link rel="stylesheet" href="landing-style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <h1 class="logo">LA CELLULE</h1>
+            <div class="nav-menu" id="navMenu">
+                <a href="#home" class="nav-link">Accueil</a>
+                <a href="signup.html" class="nav-link">Créer un Compte</a>
+                <a href="dashboard.html" class="nav-link">Mon Espace</a>
+            </div>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">LA CELLULE POUR UN CORPS DE RÊVE</h1>
+             <p class="hero-subtitle">La solution exclusive en 15 à 30 minutes par jour</p>
+              <a href="https://whop.com/joined/matdeff/products/la-cellule-4c/" class="cta-button">Accéder Maintenant</a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <h2>Pourquoi Choisir La Cellule ?</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <h3>✓ Qualité Premium</h3>
+                <p><b>5 cellules fitness</b> développées avec soin et expertise pour vous offrir <b>7 jours d'expériences spotives</b>.</p>
+            </div>
+            <div class="feature-card">
+                <h3>✓ Défis Exclusifs</h3>
+                <p>Accès à <b>des défis journaliers</b> conçus pour <b>maximiser vos résultats</b> et maintenir votre motivation.</p>
+            </div>
+            <div class="feature-card">
+                <h3>✓ Accès Illimité</h3>
+                <p>Profitez de tous les outils et fonctionnalités sans limitation pour vous <b>forger un corps de rêve</b>.</p>
+            </div>
+            <div class="feature-card">
+                <h3>✓ Objectif personnalisable</h3>
+                <p><b>Adaptez votre parcours à vos besoins</b> et à vos objectifs spécifiques, <b>à votre rythme</b> et dans le confort de votre domicile.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits">
+        <h2>Profitez de Ces Avantages Exclusifs</h2>
+        <ul class="benefits-list">
+            <li>Contenu premium régulièrement mis à jour</li>
+            <li>Accès immédiat après votre adhésion</li>
+            <li>Communauté active d'utilisateurs engagés</li>
+            <li>Support client réactif et professionnel</li>
+            <li>Garantie de résultat en moins de 6 mois</li>
+        </ul>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <h2>Prêt à Rejoindre La Cellule ?</h2>
+        <p>C'est l'opportunité qu'il vous faut pour transformer votre corps. Accédez dès maintenant !</p>
+        <a href="https://whop.com/joined/matdeff/products/la-cellule-4c/" class="cta-button cta-button-large">Rejoindre Maintenant</a>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2026 Matdeff. Tous droits réservés.</p>
+        <p>Plateforme sécurisée et vérifiée</p>
+    </footer>
+
+    <script>
+        // Menu burger toggle
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('navMenu');
+
+        hamburger.addEventListener('click', function() {
+            navMenu.classList.toggle('active');
+            hamburger.classList.toggle('active');
+        });
+
+        // Fermer le menu quand on clique sur un lien
+        const navLinks = document.querySelectorAll('.nav-link');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                navMenu.classList.remove('active');
+                hamburger.classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>

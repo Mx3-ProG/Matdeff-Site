@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tableau de Bord - LA CELLULE</title>
+    <link rel="stylesheet" href="landing-style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <h1 class="logo">LA CELLULE</h1>
+            <div class="nav-menu" id="navMenu">
+                <a href="landing-page.html" class="nav-link">Accueil</a>
+                <a href="signup.html" class="nav-link">Créer un Compte</a>
+                <a href="dashboard.html" class="nav-link">Mon Espace</a>
+            </div>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Dashboard Section -->
+    <div class="dashboard-container">
+        <div class="dashboard-header">
+            <h2 id="welcome-message">Bienvenue sur votre Tableau de Bord</h2>
+            <p id="user-info">Connectez-vous pour accéder à votre espace personnel</p>
+            <button class="logout-btn" id="logout-btn" style="display: none; margin-top: 15px;">Se Déconnecter</button>
+        </div>
+
+        <!-- Dashboard Content -->
+        <div id="dashboard-content" style="display: none;">
+            <div class="dashboard-grid">
+                <!-- Profil Card -->
+                <div class="dashboard-card">
+                    <h3>👤 Mon Profil</h3>
+                    <p><strong>Nom:</strong> <span id="display-name"></span></p>
+                    <p><strong>Email:</strong> <span id="display-email"></span></p>
+                    <p><strong>Membre depuis:</strong> <span id="display-date"></span></p>
+                </div>
+
+                <!-- Accès Produit Card -->
+                <div class="dashboard-card">
+                    <h3>📦 Votre Accès</h3>
+                    <p>Vous avez accès full à LA CELLULE 4C</p>
+                    <p style="color: #d32f2f; font-weight: bold;">✓ Actif</p>
+                    <a href="https://whop.com/joined/matdeff/products/la-cellule-4c/" class="cta-button" style="display: inline-block; margin-top: 10px;">Accéder au Produit</a>
+                </div>
+
+                <!-- Statistiques Card -->
+                <div class="dashboard-card">
+                    <h3>📊 Statistiques</h3>
+                    <p><strong>Dernière connexion:</strong> <span id="last-login">Aujourd'hui</span></p>
+                    <p><strong>Progression:</strong> <span id="progress">0%</span></p>
+                    <p><strong>Statut:</strong> <span style="color: #d32f2f; font-weight: bold;">Membre Actif</span></p>
+                </div>
+
+                <!-- Ressources Card -->
+                <div class="dashboard-card">
+                    <h3>📚 Ressources</h3>
+                    <p>Accédez à tous les contenus premium:</p>
+                    <ul style="margin-top: 10px; padding-left: 20px;">
+                        <li>Guide complet PDF</li>
+                        <li>Vidéos d'entraînement</li>
+                        <li>Programmes personnalisés</li>
+                    </ul>
+                </div>
+
+                <!-- Support Card -->
+                <div class="dashboard-card">
+                    <h3>💬 Support</h3>
+                    <p>Besoin d'aide? Notre équipe est disponible pour vous.</p>
+                    <p><strong>Email:</strong> support@lacellule.fr</p>
+                    <p><strong>Horaires:</strong> Lun-Ven 9h-18h</p>
+                </div>
+
+                <!-- Paramètres Card -->
+                <div class="dashboard-card">
+                    <h3>⚙️ Paramètres</h3>
+                    <button class="logout-btn" id="logout-btn-card" style="width: 100%; margin-top: 10px;">Se Déconnecter</button>
+                </div>
+            </div>
+
+            <!-- Section Contenu Premium -->
+            <section class="benefits">
+                <h2>Bienvenue dans Your LA CELLULE!</h2>
+                <ul class="benefits-list">
+                    <li>Accès illimité à tous les contenus premium</li>
+                    <li>Mise à jour régulière des programmes</li>
+                    <li>Communauté exclusive de membres</li>
+                    <li>Support prioritaire 24/7</li>
+                    <li>Accès aux webinaires et formations bonus</li>
+                </ul>
+            </section>
+        </div>
+
+        <!-- Login Section (si pas connecté) -->
+        <div id="login-section">
+            <div class="form-container">
+                <h2>Connectez-vous</h2>
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label for="login-email">Email</label>
+                        <input type="email" id="login-email" name="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="login-password">Mot de passe</label>
+                        <input type="password" id="login-password" name="password" required>
+                    </div>
+
+                    <button type="submit" class="submit-btn">Se Connecter</button>
+                </form>
+
+                <p style="text-align: center; margin-top: 20px; color: #666666;">
+                    Pas encore de compte? <a href="signup.html" style="color: #d32f2f;">Créez-en un</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2026 La Cellule 4C. Tous droits réservés.</p>
+        <p>Plateforme sécurisée et vérifiée</p>
+    </footer>
+
+    <script>
+        // Menu burger toggle
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('navMenu');
+
+        hamburger.addEventListener('click', function() {
+            navMenu.classList.toggle('active');
+            hamburger.classList.toggle('active');
+        });
+
+        const navLinks = document.querySelectorAll('.nav-link');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                navMenu.classList.remove('active');
+                hamburger.classList.remove('active');
+            });
+        });
+
+        // Dashboard Logic
+        function checkLogin() {
+            const isLoggedIn = localStorage.getItem('isLoggedIn');
+            const user = localStorage.getItem('user');
+
+            if (isLoggedIn === 'true' && user) {
+                const userData = JSON.parse(user);
+                displayDashboard(userData);
+            } else {
+                showLoginForm();
+            }
+        }
+
+        function displayDashboard(userData) {
+            document.getElementById('login-section').style.display = 'none';
+            document.getElementById('dashboard-content').style.display = 'block';
+
+            const fullName = userData.firstname + ' ' + userData.lastname;
+
+            document.getElementById('welcome-message').textContent = `Bienvenue ${userData.firstname}! 👋`;
+            document.getElementById('user-info').textContent = `Vous êtes connecté avec: ${userData.email}`;
+            document.getElementById('display-name').textContent = fullName;
+            document.getElementById('display-email').textContent = userData.email;
+            document.getElementById('display-date').textContent = userData.joinDate;
+
+            // Afficher les boutons de déconnexion
+            document.getElementById('logout-btn').style.display = 'inline-block';
+        }
+
+        function showLoginForm() {
+            document.getElementById('login-section').style.display = 'block';
+            document.getElementById('dashboard-content').style.display = 'none';
+            document.getElementById('logout-btn').style.display = 'none';
+        }
+
+        // Form d'authentification
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+
+            // Vérifier les données
+            const savedUser = localStorage.getItem('user');
+            if (savedUser) {
+                const userData = JSON.parse(savedUser);
+                if (email === userData.email && password === userData.password) {
+                    localStorage.setItem('isLoggedIn', 'true');
+                    checkLogin();
+                } else {
+                    alert('Email ou mot de passe incorrect!');
+                }
+            } else {
+                alert('Aucun compte trouvé. Veuillez créer un compte d\'abord.');
+            }
+        });
+
+        // Déconnexion
+        const logoutBtns = document.querySelectorAll('.logout-btn');
+        logoutBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                localStorage.setItem('isLoggedIn', 'false');
+                alert('Vous êtes déconnecté. À bientôt!');
+                checkLogin();
+            });
+        });
+
+        // Initialiser le dashboard
+        checkLogin();
+    </script>
+</body>
+</html>

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Créer un Compte - LA CELLULE</title>
+    <link rel="stylesheet" href="landing-style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <h1 class="logo">LA CELLULE</h1>
+            <div class="nav-menu" id="navMenu">
+                <a href="landing-page.html" class="nav-link">Accueil</a>
+                <a href="signup.html" class="nav-link">Créer un Compte</a>
+                <a href="dashboard.html" class="nav-link">Mon Espace</a>
+            </div>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Signup Section -->
+    <section class="hero" style="min-height: auto; padding: 60px 20px;">
+        <div class="form-container">
+            <h2>Créer Votre Compte</h2>
+            <form id="signupForm">
+                <div class="form-group">
+                    <label for="firstname">Prénom</label>
+                    <input type="text" id="firstname" name="firstname" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="lastname">Nom</label>
+                    <input type="text" id="lastname" name="lastname" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Mot de passe</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="confirm-password">Confirmer le mot de passe</label>
+                    <input type="password" id="confirm-password" name="confirm-password" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Téléphone (Optionnel)</label>
+                    <input type="tel" id="phone" name="phone">
+                </div>
+
+                <button type="submit" class="submit-btn">Créer mon Compte</button>
+            </form>
+
+            <p style="text-align: center; margin-top: 20px; color: #666666;">
+                Vous avez déjà un compte? <a href="dashboard.html" style="color: #d32f2f;">Connectez-vous</a>
+            </p>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <h2>Avantages de Votre Compte</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <h3>✓ Accès Immédiat</h3>
+                <p>Accédez immédiatement à tous les contenus premium dès votre inscription.</p>
+            </div>
+            <div class="feature-card">
+                <h3>✓ Progression Suivie</h3>
+                <p>Suivi de votre progression et de vos statistiques personnelles.</p>
+            </div>
+            <div class="feature-card">
+                <h3>✓ Support Personnel</h3>
+                <p>Accès au support client pour toutes vos questions.</p>
+            </div>
+            <div class="feature-card">
+                <h3>✓ Communauté Exclusive</h3>
+                <p>Rejoignez une communauté de membres motivés et engagés.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2026 La Cellule 4C. Tous droits réservés.</p>
+        <p>Plateforme sécurisée et vérifiée</p>
+    </footer>
+
+    <script>
+        // Menu burger toggle
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('navMenu');
+
+        hamburger.addEventListener('click', function() {
+            navMenu.classList.toggle('active');
+            hamburger.classList.toggle('active');
+        });
+
+        // Fermer le menu quand on clique sur un lien
+        const navLinks = document.querySelectorAll('.nav-link');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                navMenu.classList.remove('active');
+                hamburger.classList.remove('active');
+            });
+        });
+
+        // Formulaire de signup
+        document.getElementById('signupForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const firstname = document.getElementById('firstname').value;
+            const lastname = document.getElementById('lastname').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirm-password').value;
+
+            // Validation
+            if (password !== confirmPassword) {
+                alert('Les mots de passe ne correspondent pas!');
+                return;
+            }
+
+            // Stocker les données dans localStorage
+            const userData = {
+                firstname,
+                lastname,
+                email,
+                password,
+                joinDate: new Date().toLocaleDateString('fr-FR')
+            };
+
+            localStorage.setItem('user', JSON.stringify(userData));
+            localStorage.setItem('isLoggedIn', 'true');
+
+            alert('Compte créé avec succès! Redirection vers votre tableau de bord...');
+            window.location.href = 'dashboard.html';
+        });
+    </script>
+</body>
+</html>
