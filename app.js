@@ -126,9 +126,13 @@ class LaCelluleWebApp {
     }
 
     // Menu mobile amélioré
+    // Menu mobile - À ajouter plus tard lorsqu'on aura accès aux comptes utilisateurs
     setupMobileMenu() {
         const hamburger = document.querySelector('.hamburger');
         const navMenu = document.querySelector('.nav-menu');
+
+        // Désactivé temporairement
+        if (!hamburger) return;
 
         hamburger?.addEventListener('click', () => {
             hamburger.classList.toggle('active');
@@ -142,15 +146,29 @@ class LaCelluleWebApp {
             }
         });
 
+        // Fermer le menu en cliquant sur un lien
+        const navLinks = document.querySelectorAll('.nav-link');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                // Délai pour que l'animation se termine avant de fermer
+                setTimeout(() => {
+                    this.closeMobileMenu();
+                }, 100);
+            });
+        });
+
         // Fermer le menu en cliquant en dehors
         document.addEventListener('click', (e) => {
-            if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {
-                this.closeMobileMenu();
+            if (!hamburger?.contains(e.target) && !navMenu?.contains(e.target)) {
+                if (hamburger?.classList.contains('active')) {
+                    this.closeMobileMenu();
+                }
             }
         });
     }
 
     openMobileMenu() {
+        document.body.classList.add('menu-open');
         document.body.style.overflow = 'hidden';
         // Animation d'ouverture
         const navLinks = document.querySelectorAll('.nav-link');
@@ -161,10 +179,11 @@ class LaCelluleWebApp {
 
     closeMobileMenu() {
         const hamburger = document.querySelector('.hamburger');
-        const navMenu = document.querySelector('.navMenu');
+        const navMenu = document.querySelector('.nav-menu');
 
         hamburger?.classList.remove('active');
         navMenu?.classList.remove('active');
+        document.body.classList.remove('menu-open');
         document.body.style.overflow = '';
 
         // Reset animations
