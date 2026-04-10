@@ -63,13 +63,29 @@ async function displayClientResults(containerId, category = null) {
   if (!container) return;
 
   const results = await getClientResults(category);
-  container.innerHTML = results.map(result => `
-    <div class="result-card">
-      <img src="${result.public_url}" alt="${result.client_name}" />
-      <h3>${result.client_name}</h3>
-      <p>${result.description}</p>
-    </div>
-  `).join('');
+  if (results.length === 0) {
+    container.innerHTML = '<p>Aucun résultat trouvé pour le moment.</p>';
+    return;
+  }
+
+  // Classes d'animation pour chaque carte
+  const animationClasses = [
+    'animate-scale-in',
+    'animate-scale-in delay-100',
+    'animate-scale-in delay-200',
+    'animate-scale-in delay-300',
+    'animate-scale-in delay-400',
+    'animate-scale-in delay-500'
+  ];
+
+  container.innerHTML = results.map((result, index) => {
+    const animationClass = animationClasses[index % animationClasses.length];
+    return `
+      <article class="resultat-card ${animationClass}">
+        <img src="${result.public_url}" alt="Résultat de ${result.client_name}" loading="lazy" />
+      </article>
+    `;
+  }).join('');
 }
 
 // Export pour utilisation dans d'autres fichiers

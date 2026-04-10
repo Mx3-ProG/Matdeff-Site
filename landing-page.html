@@ -8,6 +8,7 @@
     <title>LA CELLULE - Ton corps de rêve en 15 minutes par jour</title>
     <link rel="stylesheet" href="landing-style.css">
     <script src="app.js" defer></script>
+    <script src="images/resultats_clients.js"></script>
 </head>
 <body>
     <!-- Navigation -->
@@ -66,24 +67,8 @@
         <div class="container">
             <h2>Résultats Réels</h2>
             <p class="resultats-intro">Voici les transformations obtenues par les membres de LA CELLULE. Chaque image correspond à un vrai parcours de 15 minutes par jour.</p>
-            <div class="resultats-grid">
-                <article class="resultat-card animate-scale-in"><img src="images/resultat-01.jpg" alt="Résultat 1" loading="lazy"></article>
-                <article class="resultat-card animate-scale-in delay-100"><img src="images/resultat-02.jpg" alt="Résultat 2" loading="lazy"></article>
-                <article class="resultat-card animate-scale-in delay-200"><img src="images/resultat-03.jpg" alt="Résultat 3" loading="lazy"></article>
-                <article class="resultat-card animate-scale-in delay-300"><img src="images/resultat-04.jpg" alt="Résultat 4" loading="lazy"></article>
-                <article class="resultat-card animate-scale-in delay-400"><img src="images/resultat-05.jpg" alt="Résultat 5" loading="lazy"></article>
-                <article class="resultat-card animate-scale-in delay-500"><img src="images/resultat-06.jpg" alt="Résultat 6" loading="lazy"></article>
-                <article class="resultat-card animate-scale-in"><img src="images/resultat-07.jpg" alt="Résultat 7" loading="lazy"></article>
-                <article class="resultat-card animate-scale-in delay-100"><img src="images/resultat-08.jpg" alt="Résultat 8" loading="lazy"></article>
-                <article class="resultat-card animate-scale-in delay-200"><img src="images/resultat-09.jpg" alt="Résultat 9" loading="lazy"></article>
-                <article class="resultat-card animate-scale-in delay-300"><img src="images/resultat-10.jpg" alt="Résultat 10" loading="lazy"></article>
-                <article class="resultat-card animate-scale-in delay-400"><img src="images/resultat-11.jpg" alt="Résultat 11" loading="lazy"></article>
-                <article class="resultat-card animate-scale-in delay-500"><img src="images/resultat-12.jpg" alt="Résultat 12" loading="lazy"></article>
-                <article class="resultat-card animate-scale-in"><img src="images/resultat-13.jpg" alt="Résultat 13" loading="lazy"></article>
-                <article class="resultat-card animate-scale-in delay-100"><img src="images/resultat-14.jpg" alt="Résultat 14" loading="lazy"></article>
-                <article class="resultat-card animate-scale-in delay-200"><img src="images/resultat-15.jpg" alt="Résultat 15" loading="lazy"></article>
-                <article class="resultat-card animate-scale-in delay-300"><img src="images/resultat-16.jpg" alt="Résultat 16" loading="lazy"></article>
-                <article class="resultat-card animate-scale-in delay-400"><img src="images/resultat-17.jpg" alt="Résultat 17" loading="lazy"></article>
+            <div id="results-container" class="resultats-grid">
+                <!-- Les images seront chargées dynamiquement depuis Supabase -->
             </div>
         </div>
     </section>
@@ -323,6 +308,17 @@
                     });
                 }
             });
+        });
+
+        // Charger les résultats clients depuis Supabase
+        document.addEventListener('DOMContentLoaded', async () => {
+            try {
+                await ClientResults.displayClientResults('results-container');
+            } catch (error) {
+                console.error('Erreur lors du chargement des résultats:', error);
+                // Fallback: afficher un message d'erreur
+                document.getElementById('results-container').innerHTML = '<p>Les résultats sont en cours de chargement...</p>';
+            }
         });
     </script>
 </body>
