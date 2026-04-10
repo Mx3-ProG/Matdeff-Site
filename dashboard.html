@@ -46,7 +46,7 @@
                 <!-- Accès Produit Card -->
                 <div class="dashboard-card">
                     <h3>📦 Votre Accès</h3>
-                    <p>Vous avez accès full à LA CELLULE 4C</p>
+                    <p>Vous avez un accès complet à LA CELLULE 4C</p>
                     <p style="color: #d32f2f; font-weight: bold;">✓ Actif</p>
                     <a href="https://buy.stripe.com/5kQ8wR908gQje57cSt2sM00" class="cta-button" style="display: inline-block; margin-top: 10px;">Accéder au Produit</a>
                 </div>
@@ -87,7 +87,7 @@
 
             <!-- Section Contenu Premium -->
             <section class="benefits">
-                <h2>Bienvenue dans Your LA CELLULE!</h2>
+                <h2>Bienvenue dans LA CELLULE !</h2>
                 <ul class="benefits-list">
                     <li>Accès illimité à tous les contenus premium</li>
                     <li>Mise à jour régulière des programmes</li>
@@ -134,10 +134,12 @@
         const hamburger = document.getElementById('hamburger');
         const navMenu = document.getElementById('navMenu');
 
-        hamburger.addEventListener('click', function() {
-            navMenu.classList.toggle('active');
-            hamburger.classList.toggle('active');
-        });
+        if (hamburger) {
+            hamburger.addEventListener('click', function() {
+                navMenu.classList.toggle('active');
+                hamburger.classList.toggle('active');
+            });
+        }
 
         const navLinks = document.querySelectorAll('.nav-link');
         navLinks.forEach(link => {

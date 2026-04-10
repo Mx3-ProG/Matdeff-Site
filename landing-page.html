@@ -15,18 +15,18 @@
         <div class="navbar-container">
             <h1 class="logo">LA CELLULE</h1>
             <div class="nav-menu" id="navMenu">
+                <!-- commentaire pour le moment, on n'a pas encore les pages liées -->
                 <a href="#home" class="nav-link">Accueil</a>
                 <a href="#concept" class="nav-link">Le Concept</a>
                 <a href="#promesse" class="nav-link">La Promesse</a>
                 <a href="signup.html" class="nav-link">Créer un Compte</a>
                 <a href="dashboard.html" class="nav-link">Mon Espace</a>
             </div>
-            <!-- À ajouter plus tard lorsqu'on aura accès aux comptes utilisateurs -->
-            <!-- <div class="hamburger" id="hamburger">
+            <div class="hamburger" id="hamburger">
                 <span></span>
                 <span></span>
                 <span></span>
-            </div> -->
+            </div>
         </div>
     </nav>
 
@@ -37,7 +37,7 @@
             <p class="hero-subtitle">Transforme ton corps, ton énergie et ta discipline avec des circuits express, intenses et guidés, directement depuis chez toi. Pas de salle, pas de matériel compliqué, juste toi, ton corps… et 15 minutes bien utilisées.</p>
             <p class="hero-hook"><strong>Tu n'as pas besoin de plus de temps. Tu as besoin d'un meilleur système.</strong></p>
             <a href="https://buy.stripe.com/5kQ8wR908gQje57cSt2sM00" class="cta-button">Entrer dans LA CELLULE maintenant</a>
-            <p class="social-proof">Format inspiré des trainings express et circuits full body utilisés par les coachs pour tonifier tout le corps en seulement 15 minutes par jour.</p>
+            <p class="social-proof">Format inspiré des entraînements express et des circuits complets utilisés par les coachs pour tonifier tout le corps en seulement 15 minutes par jour.</p>
         </div>
         <div class="hero-image">
             <img src="images/hero-01.jpg" alt="Circuit training à domicile" class="hero-img">
@@ -52,7 +52,7 @@
                 <div class="concept-text animate-fade-in-left">
                     <p><strong>LA CELLULE, c'est ton espace fermé dans le temps : 15 minutes, montre en main, où tu coupes le monde extérieur pour te reconnecter à ton corps et le reprogrammer en profondeur.</strong></p>
                     <p>Comme une cellule musculaire qui se renforce à chaque stimulus, chaque session vient envoyer un signal clair à ton corps : « on change, maintenant ».</p>
-                    <p>Dans LA CELLULE, tu ne "fais pas un peu de sport", tu entres dans un rituel : court, intense, simple à suivre, mais pensé pour déclencher des changements visibles si tu joues le jeu.</p>
+                    <p>Dans LA CELLULE, tu ne "fais pas un peu de sport", tu entres dans un rituel : court, intense, simple à suivre, mais conçu pour déclencher des changements visibles si tu joues le jeu.</p>
                 </div>
                 <div class="concept-image animate-fade-in-right">
                     <img src="images/concept-01.jpg" alt="Visuel concept LA CELLULE" class="concept-img">
@@ -96,7 +96,7 @@
             <div class="promesse-grid">
                 <div class="promesse-card animate-fade-in-up">
                     <h3>🏋️ Raffermir ton corps en global</h3>
-                    <p>Jambes, fessiers, abdos, haut du corps grâce à des circuits full body pensés pour solliciter plusieurs groupes musculaires en même temps.</p>
+                    <p>Jambes, fessiers, abdos, haut du corps grâce à des circuits complets pensés pour solliciter plusieurs groupes musculaires en même temps.</p>
                 </div>
                 <div class="promesse-card animate-fade-in-up delay-100">
                     <h3>⚡ Booster ton métabolisme</h3>
@@ -148,7 +148,7 @@
             <div class="contenu-grid">
                 <div class="contenu-card animate-fade-in-up">
                     <h3>🎥 Circuits 15 minutes guidés en vidéo</h3>
-                    <p>Full body, bas du corps, haut du corps, cardio, renfo, mobilité : tu choisis ton focus, nous gérons la structure et le tempo.</p>
+                    <p>Entraînements complets, bas du corps, haut du corps, cardio, renfo, mobilité : tu choisis ton focus, nous gérons la structure et le tempo.</p>
                 </div>
                 <div class="contenu-card animate-fade-in-up delay-100">
                     <h3>📊 Plusieurs niveaux d'intensité</h3>
@@ -181,7 +181,7 @@
                         <li>Tu manques de temps, mais tu refuses d'accepter un corps "en standby"</li>
                         <li>Tu n'aimes pas (ou plus) la salle de sport, les trajets, l'ambiance, les regards</li>
                         <li>Tu veux un cadre clair, sans réfléchir : tu ouvres la séance et tu exécutes</li>
-                        <li>Tu veux ressentir des effets rapides sur la tonicité, le souffle et l'énergie, comme ce qu'on observe avec les programmes full body 15 minutes bien construits</li>
+                        <li>Tu veux ressentir des effets rapides sur la tonicité, le souffle et l'énergie, comme ce qu'on observe avec les programmes complets de 15 minutes bien construits</li>
                     </ul>
                 </div>
                 <div class="pour-qui-pas animate-fade-in-right">
@@ -295,10 +295,12 @@
         const hamburger = document.getElementById('hamburger');
         const navMenu = document.getElementById('navMenu');
 
-        hamburger.addEventListener('click', function() {
-            navMenu.classList.toggle('active');
-            hamburger.classList.toggle('active');
-        });
+        if (hamburger) {
+            hamburger.addEventListener('click', function() {
+                navMenu.classList.toggle('active');
+                hamburger.classList.toggle('active');
+            });
+        }
 
         // Fermer le menu quand on clique sur un lien
         const navLinks = document.querySelectorAll('.nav-link');
