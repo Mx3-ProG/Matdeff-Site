@@ -9,9 +9,13 @@ class LaCelluleWebApp {
     }
 
     init() {
-        this.setupScrollAnimations();
+        if ('IntersectionObserver' in window) {
+            this.setupScrollAnimations();
+            this.setupIntersectionObserver();
+        } else {
+            this.revealWithoutObserver();
+        }
         this.setupNavbarScroll();
-        this.setupIntersectionObserver();
         this.setupSmoothScrolling();
         this.setupMobileMenu();
         this.setupLoadingStates();
@@ -259,6 +263,11 @@ class LaCelluleWebApp {
 
             // Navigation au clavier pour les cartes
             if (e.key === 'Tab') {
+                const isMobileMenuOpen = document.body.classList.contains('menu-open');
+                if (!isMobileMenuOpen) {
+                    return;
+                }
+
                 const focusableElements = document.querySelectorAll(
                     'a[href], button, input, select, textarea, [tabindex]:not([tabindex="-1"])'
                 );
@@ -294,6 +303,14 @@ class LaCelluleWebApp {
     }
 
     setupLazyLoading() {
+        if (!('IntersectionObserver' in window)) {
+            document.querySelectorAll('img[data-src]').forEach(img => {
+                img.src = img.dataset.src;
+                img.classList.remove('lazy');
+            });
+            return;
+        }
+
         const images = document.querySelectorAll('img[data-src]');
 
         const imageObserver = new IntersectionObserver((entries) => {
@@ -351,6 +368,17 @@ class LaCelluleWebApp {
     static extend(name, fn) {
         LaCelluleWebApp.prototype[name] = fn;
     }
+
+    revealWithoutObserver() {
+        const sections = document.querySelectorAll('section');
+        sections.forEach(section => {
+            section.style.opacity = '1';
+            section.style.transform = 'translateY(0)';
+        });
+
+        const animatedElements = document.querySelectorAll('.animate-fade-in-up, .animate-fade-in-left, .animate-fade-in-right, .animate-scale-in');
+        animatedElements.forEach(el => el.classList.add('animate-visible'));
+    }
 }
 
 // Initialisation quand le DOM est prêt
@@ -362,7 +390,7 @@ document.addEventListener('DOMContentLoaded', () => {
 if (!('IntersectionObserver' in window)) {
     // Polyfill simple
     const elements = document.querySelectorAll('.animate-fade-in-up, .animate-fade-in-left, .animate-fade-in-right, .animate-scale-in');
-    elements.forEach(el => el.classList.add('revealed'));
+    elements.forEach(el => el.classList.add('animate-visible'));
 }
 
 // Service Worker pour PWA (futur)

@@ -1,5 +1,6 @@
 // Gestion du logo et favicon depuis les fichiers statiques locaux.
 const LOGO_CANDIDATE_PATHS = [
+  'images/logo_favicon/Logo_Matdeff.JPG',
   'images/content/logo.png',
   'images/content/logo.jpg',
   'images/content/logo.jpeg',
@@ -14,8 +15,7 @@ const LOGO_CANDIDATE_PATHS = [
   'images/logo_favicon/favicon.jpg',
   'images/logo_favicon/favicon.jpeg',
   'images/logo_favicon/favicon.webp',
-  'images/logo_favicon/favicon.svg',
-  'images/logo_favicon/Logo_Matdeff.JPG'
+  'images/logo_favicon/favicon.svg'
 ];
 
 function fileExists(path) {
@@ -50,9 +50,16 @@ async function setFavicon(logoUrl) {
   // Créer et ajouter le nouveau favicon
   const link = document.createElement('link');
   link.rel = 'icon';
-  link.type = 'image/png';
+  link.type = faviconUrl.toLowerCase().endsWith('.jpg') || faviconUrl.toLowerCase().endsWith('.jpeg')
+    ? 'image/jpeg'
+    : 'image/png';
   link.href = faviconUrl;
   document.head.appendChild(link);
+
+  const shortcut = document.createElement('link');
+  shortcut.rel = 'shortcut icon';
+  shortcut.href = faviconUrl;
+  document.head.appendChild(shortcut);
 }
 
 // Fonction pour ajouter le logo dans la navbar
