@@ -89,32 +89,6 @@
         </div>
     </section>
 
-    <!-- Résultats Section -->
-    <section id="resultats" class="resultats">
-        <div class="container">
-            <p class="section-kicker section-kicker-light">Preuves concretes</p>
-            <h2>Des avant/apres qui parlent plus vite que les promesses.</h2>
-            <p class="resultats-intro">Chaque transformation vient d'un cadre simple: des seances courtes, une execution reguliere et un systeme assez motivant pour tenir dans le temps.</p>
-            <div class="proof-strip animate-fade-in-up">
-                <article class="proof-stat-card">
-                    <strong>Routine courte</strong>
-                    <span>Pour continuer meme les jours charges.</span>
-                </article>
-                <article class="proof-stat-card">
-                    <strong>Progression lisible</strong>
-                    <span>Niveaux, repères et trajectoire claire.</span>
-                </article>
-                <article class="proof-stat-card">
-                    <strong>Avant/Apres reels</strong>
-                    <span>Des transformations qui ancrent la confiance.</span>
-                </article>
-            </div>
-            <div id="results-container" class="resultats-grid">
-                <!-- Les images sont chargees dynamiquement depuis images/content -->
-            </div>
-        </div>
-    </section>
-
     <!-- Bloc Rassurance -->
     <section class="rassurance">
         <div class="container">
@@ -351,6 +325,49 @@
         </div>
     </section>
 
+    <!-- Newsletter Section -->
+    <section id="newsletter" class="newsletter">
+        <div class="container">
+            <p class="section-kicker">Defis quotidiens</p>
+            <h2>Recois un defi fitness quotidien directement par email.</h2>
+            <p class="newsletter-intro">Inscris-toi pour recevoir un mini challenge chaque jour et garder ton elan sans te poser de questions.</p>
+            <form id="newsletter-form" class="newsletter-form" novalidate>
+                <label for="newsletter-email" class="newsletter-label">Ton meilleur email</label>
+                <div class="newsletter-controls">
+                    <input id="newsletter-email" name="email" type="email" class="newsletter-input" placeholder="ton@email.com" required />
+                    <button type="submit" class="cta-button">Recevoir les defis</button>
+                </div>
+            </form>
+            <p id="newsletter-feedback" class="newsletter-feedback" aria-live="polite"></p>
+        </div>
+    </section>
+
+    <!-- Résultats Section -->
+    <section id="resultats" class="resultats">
+        <div class="container">
+            <p class="section-kicker section-kicker-light">Preuves concretes</p>
+            <h2>Des avant/apres qui parlent plus vite que les promesses.</h2>
+            <p class="resultats-intro">Chaque transformation vient d'un cadre simple: des seances courtes, une execution reguliere et un systeme assez motivant pour tenir dans le temps.</p>
+            <div class="proof-strip animate-fade-in-up">
+                <article class="proof-stat-card">
+                    <strong>Routine courte</strong>
+                    <span>Pour continuer meme les jours charges.</span>
+                </article>
+                <article class="proof-stat-card">
+                    <strong>Progression lisible</strong>
+                    <span>Niveaux, repères et trajectoire claire.</span>
+                </article>
+                <article class="proof-stat-card">
+                    <strong>Avant/Apres reels</strong>
+                    <span>Des transformations qui ancrent la confiance.</span>
+                </article>
+            </div>
+            <div id="results-container" class="resultats-grid">
+                <!-- Les images WebP sont chargees dynamiquement depuis images/content_webp -->
+            </div>
+        </div>
+    </section>
+
     <div class="mobile-cta-bar" aria-label="Action rapide mobile">
         <a href="https://buy.stripe.com/5kQ8wR908gQje57cSt2sM00" class="cta-button mobile-cta-button">Rejoindre LA CELLULE</a>
     </div>
@@ -364,8 +381,42 @@
     </footer>
 
     <script>
-        // Charger les résultats clients depuis images/content
+        function initNewsletterForm() {
+            const form = document.getElementById('newsletter-form');
+            const emailInput = document.getElementById('newsletter-email');
+            const feedback = document.getElementById('newsletter-feedback');
+            if (!form || !emailInput || !feedback) return;
+
+            form.addEventListener('submit', (event) => {
+                event.preventDefault();
+
+                const email = emailInput.value.trim().toLowerCase();
+                const validEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+                if (!validEmail) {
+                    feedback.textContent = 'Entre une adresse email valide pour recevoir les defis.';
+                    feedback.classList.add('newsletter-feedback--error');
+                    feedback.classList.remove('newsletter-feedback--success');
+                    return;
+                }
+
+                const storageKey = 'lacellule_newsletter_emails';
+                const storedEmails = JSON.parse(localStorage.getItem(storageKey) || '[]');
+                if (!storedEmails.includes(email)) {
+                    storedEmails.push(email);
+                    localStorage.setItem(storageKey, JSON.stringify(storedEmails));
+                }
+
+                feedback.textContent = 'Parfait. Tu es inscrit(e), ton prochain defi quotidien arrive bientot.';
+                feedback.classList.add('newsletter-feedback--success');
+                feedback.classList.remove('newsletter-feedback--error');
+                form.reset();
+            });
+        }
+
+        // Charger les résultats clients depuis images/content_webp
         document.addEventListener('DOMContentLoaded', async () => {
+            initNewsletterForm();
             try {
                 await ClientResults.displayClientResults('results-container');
             } catch (error) {

@@ -803,6 +803,79 @@ section {
   text-transform: uppercase;
 }
 
+.resultats-actions {
+  margin-top: var(--spacing-xl);
+  display: flex;
+  justify-content: center;
+}
+
+.resultats-more-btn {
+  min-width: 260px;
+}
+
+.newsletter {
+  background: linear-gradient(180deg, #f7f7f8 0%, #ffffff 100%);
+}
+
+.newsletter-intro {
+  max-width: 760px;
+  margin-bottom: var(--spacing-lg);
+  color: var(--gray-600);
+  font-size: 1.05rem;
+}
+
+.newsletter-form {
+  max-width: 760px;
+}
+
+.newsletter-label {
+  display: inline-flex;
+  margin-bottom: 0.6rem;
+  color: var(--secondary);
+  font-size: 0.94rem;
+  font-weight: 700;
+}
+
+.newsletter-controls {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 0.8rem;
+}
+
+.newsletter-input {
+  min-height: 56px;
+  padding: 0.95rem 1rem;
+  border-radius: var(--radius-pill);
+  border: var(--border-soft);
+  background: #ffffff;
+  color: var(--secondary);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.newsletter-input:focus {
+  outline: none;
+  border-color: rgba(225, 6, 0, 0.44);
+  box-shadow: 0 0 0 4px rgba(225, 6, 0, 0.1);
+}
+
+.newsletter-feedback {
+  min-height: 1.4rem;
+  margin-top: 0.7rem;
+  margin-bottom: 0;
+  font-size: 0.94rem;
+  color: var(--gray-600);
+}
+
+.newsletter-feedback--success {
+  color: var(--success);
+  font-weight: 700;
+}
+
+.newsletter-feedback--error {
+  color: var(--accent);
+  font-weight: 700;
+}
+
 .concept,
 .rassurance,
 .promesse,
@@ -1334,6 +1407,10 @@ select:focus-visible {
   .final-cta-actions {
     flex-direction: column;
     align-items: stretch;
+  }
+
+  .newsletter-controls {
+    grid-template-columns: 1fr;
   }
 
   .cta-button,
