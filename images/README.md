@@ -23,4 +23,4 @@ Images prévues :
 - resultat-16.jpg
 - resultat-17.jpg
 
-Dépose les images reçues dans ce dossier avec ces noms ou modifie les références dans landing-page.html si nécessaire.
+Dépose les images reçues dans ce dossier avec ces noms ou modifie les références dans index.html si nécessaire.

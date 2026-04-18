@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="LA CELLULE - Transforme ton corps en 15 minutes par jour avec des circuits fitness express et guidés">
+    <meta name="keywords" content="fitness, circuit training, 15 minutes, corps de rêve, fitness à domicile">
+    <title>LA CELLULE - Ton corps de rêve en 15 minutes par jour</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="landing-style.css">
+    <script src="app.js" defer></script>
+    <script src="images/resultats_clients.js" defer></script>
+    <script src="images/logo_favicon/logo_manager.js" defer></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <h1 class="logo">LA CELLULE</h1>
+            <div class="nav-menu" id="navMenu">
+                <a href="#home" class="nav-link">Accueil</a>
+                <a href="#resultats" class="nav-link">Résultats</a>
+                <a href="#how-it-works" class="nav-link">Parcours</a>
+                <a href="#contenu" class="nav-link">Abonnement</a>
+                <a href="signup.html" class="nav-link">Créer un Compte</a>
+                <a href="dashboard.html" class="nav-link">Mon Espace</a>
+            </div>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container hero-layout">
+            <div class="hero-content">
+                <p class="section-kicker">Discipline. Gamification. Resultats concrets.</p>
+                <h1 class="hero-title">Le systeme fitness qui transforme tes 15 minutes quotidiennes en vraie progression.</h1>
+                <p class="hero-subtitle">LA CELLULE te donne un cadre court, intense et ultra lisible pour avancer sans perdre d'energie a organiser tes seances. Tu arrives, tu lances, tu executes.</p>
+                <p class="hero-hook"><strong>Moins de friction. Plus de repetition. Plus de resultats visibles.</strong></p>
+                <div class="hero-highlights" aria-label="Points forts de l'offre">
+                    <span class="hero-pill">15 minutes guidees</span>
+                    <span class="hero-pill">Accessible partout</span>
+                    <span class="hero-pill">Progression gamifiee</span>
+                    <span class="hero-pill">Avant/Apres reels</span>
+                </div>
+                <div class="hero-actions">
+                    <a href="https://buy.stripe.com/5kQ8wR908gQje57cSt2sM00" class="cta-button">Rejoindre LA CELLULE</a>
+                    <a href="#resultats" class="cta-button cta-button-secondary">Voir les resultats</a>
+                </div>
+                <div class="hero-proof-grid" aria-label="Indicateurs de confiance">
+                    <article class="hero-proof-card">
+                        <span class="hero-proof-value">3 a 7x</span>
+                        <span class="hero-proof-label">seances par semaine, sans salle</span>
+                    </article>
+                    <article class="hero-proof-card">
+                        <span class="hero-proof-value">15 min à 30 min</span>
+                        <span class="hero-proof-label">pour rester dans la dynamique</span>
+                    </article>
+                    <article class="hero-proof-card">
+                        <span class="hero-proof-value">100%</span>
+                        <span class="hero-proof-label">mobile, tablette ou ordinateur</span>
+                    </article>
+                </div>
+                <p class="hero-note">Concu pour les personnes qui veulent un cadre exigeant, lisible et assez motivant pour tenir dans la duree.</p>
+            </div>
+            <div class="hero-visual animate-fade-in-right">
+                <div class="hero-image">
+                    <img src="images/content/Sophie_cellule_fitness_avant_apres.jpeg" alt="Circuit training a domicile" class="hero-img">
+                </div>
+                <div class="hero-floating-card hero-floating-card-top">
+                    <span class="hero-floating-label">Mode du jour</span>
+                    <strong>Execution rapide</strong>
+                    <span>Un circuit. Une mission. Pas de perte de temps.</span>
+                </div>
+                <div class="hero-floating-card hero-floating-card-bottom">
+                    <span class="hero-floating-label">Methode</span>
+                    <strong>Progression visible</strong>
+                    <span>Tu coches ta seance, tu vois ton rythme, tu recommences.</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Résultats Section -->
+    <section id="resultats" class="resultats">
+        <div class="container">
+            <p class="section-kicker section-kicker-light">Preuves concretes</p>
+            <h2>Des avant/apres qui parlent plus vite que les promesses.</h2>
+            <p class="resultats-intro">Chaque transformation vient d'un cadre simple: des seances courtes, une execution reguliere et un systeme assez motivant pour tenir dans le temps.</p>
+            <div class="proof-strip animate-fade-in-up">
+                <article class="proof-stat-card">
+                    <strong>Routine courte</strong>
+                    <span>Pour continuer meme les jours charges.</span>
+                </article>
+                <article class="proof-stat-card">
+                    <strong>Progression lisible</strong>
+                    <span>Niveaux, repères et trajectoire claire.</span>
+                </article>
+                <article class="proof-stat-card">
+                    <strong>Avant/Apres reels</strong>
+                    <span>Des transformations qui ancrent la confiance.</span>
+                </article>
+            </div>
+            <div id="results-container" class="resultats-grid">
+                <!-- Les images sont chargees dynamiquement depuis images/content -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Bloc Rassurance -->
+    <section class="rassurance">
+        <div class="container">
+            <p class="section-kicker">Pourquoi ca rassure vite</p>
+            <h2>Une experience pensee pour performer sans t'user mentalement.</h2>
+            <p class="section-intro">Tu ne viens pas chercher plus d'informations. Tu viens chercher un cadre qui te pousse a agir, sans confusion, sans surcharge et sans effet gadget.</p>
+            <div class="rassurance-grid">
+                <div class="rassurance-item animate-fade-in-up">
+                    <h3>Acces 100% en ligne</h3>
+                    <p>Depuis ton telephone, ta tablette ou ton ordinateur, avec une navigation claire et rapide a prendre en main.</p>
+                </div>
+                <div class="rassurance-item animate-fade-in-up delay-100">
+                    <h3>Seances cadrees</h3>
+                    <p>Tu ne construis pas ta routine seul. Le systeme te donne un cap, une intensite et un rythme lisibles.</p>
+                </div>
+                <div class="rassurance-item animate-fade-in-up delay-200">
+                    <h3>Progression adaptable</h3>
+                    <p>Tu commences la ou tu en es, puis tu augmentes la difficulte au fur et a mesure que ton corps repond.</p>
+                </div>
+            </div>
+            <div class="testimonial-band animate-fade-in-up delay-300">
+                <article class="testimonial-card">
+                    <p>"Enfin un format qui me fait passer a l'action au lieu de me faire culpabiliser."</p>
+                    <span>Claire, routine relancee en quelques semaines</span>
+                </article>
+                <article class="testimonial-card">
+                    <p>"Le plus fort, c'est la sensation de controle. J'entre, j'execute, je sors."</p>
+                    <span>Greg, planning charge</span>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Concept Section -->
+    <section id="concept" class="concept">
+        <div class="container">
+            <p class="section-kicker">Le concept</p>
+            <h2>Pourquoi "LA CELLULE" parle autant a celles et ceux qui veulent enfin tenir.</h2>
+            <div class="concept-content">
+                <div class="concept-text animate-fade-in-left">
+                    <p><strong>LA CELLULE, c'est ton espace ferme dans le temps: 15 minutes, montre en main, ou tu coupes le bruit exterieur pour te reconnecter a ton corps et le reprogrammer en profondeur.</strong></p>
+                    <p>Comme une cellule musculaire qui se renforce a chaque stimulus, chaque session envoie un signal clair: on avance maintenant, pas plus tard.</p>
+                    <p>Ici, tu n'essaies pas de faire "un peu de sport". Tu entres dans un rituel lisible, court et exigeant, pense pour rendre la repetition supportable et les resultats visibles.</p>
+                </div>
+                <div class="concept-image animate-fade-in-right">
+                    <img src="images/content/Greg_cellule_fitness_avant_apres.jpeg" alt="Visuel concept LA CELLULE" class="concept-img">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Promesse Section -->
+    <section id="promesse" class="promesse">
+        <div class="container">
+            <p class="section-kicker">Ce que tu debloques</p>
+            <h2>Ce que tu recuperes quand la routine devient enfin executable.</h2>
+            <p class="promesse-intro">En rejoignant LA CELLULE, tu remplaces la dispersion par des gains concrets et repetables :</p>
+            <div class="promesse-grid">
+                <div class="promesse-card animate-fade-in-up">
+                    <h3>Raffermir tout le corps</h3>
+                    <p>Jambes, fessiers, abdos, haut du corps grâce à des circuits complets pensés pour solliciter plusieurs groupes musculaires en même temps.</p>
+                </div>
+                <div class="promesse-card animate-fade-in-up delay-100">
+                    <h3>Booster ton metabolisme</h3>
+                    <p>Brûler plus de calories même au repos grâce à l'effet cardio + renfo des circuits courts et intenses.</p>
+                </div>
+                <div class="promesse-card animate-fade-in-up delay-200">
+                    <h3>Retrouver du souffle</h3>
+                    <p>Au quotidien, sans passer 1h à la salle ni réorganiser tout ton planning.</p>
+                </div>
+                <div class="promesse-card animate-fade-in-up delay-300">
+                    <h3>Reprendre le controle</h3>
+                    <p>De ton corps et de tes habitudes avec un format tellement simple à caser que tu n'as plus d'excuse : 15 minutes, chez toi, à n'importe quel moment.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comment ça marche Section -->
+    <section id="how-it-works" class="how-it-works">
+        <div class="container">
+            <p class="section-kicker section-kicker-light">Parcours utilisateur</p>
+            <h2>Comment tu avances, concretement.</h2>
+            <p class="section-intro section-intro-light">Une logique simple, rapide a comprendre et assez cadree pour te faire revenir sans negocier avec toi-meme.</p>
+            <div class="steps-grid">
+                <div class="step-card animate-scale-in">
+                    <div class="step-number">1</div>
+                    <h3>Tu entres dans la plateforme</h3>
+                    <p>Tu crées ton compte et tu accèdes immédiatement à la plateforme privée avec tous les circuits classés par niveau, objectif et durée (toujours autour de 15 minutes).</p>
+                </div>
+                <div class="step-card animate-scale-in delay-200">
+                    <div class="step-number">2</div>
+                    <h3>Tu suis un plan clair</h3>
+                    <p>Tu n'as rien à planifier : tu ouvres ta séance du jour, tu appuies sur "play" et tu te laisses guider par le coach, minute par minute, exercice après exercice, comme dans un vrai circuit training.</p>
+                </div>
+                <div class="step-card animate-scale-in delay-400">
+                    <div class="step-number">3</div>
+                    <h3>Tu repètes. Jour apres jour.</h3>
+                    <p>Les séances sont conçues pour s'intégrer dans une routine 3 à 5 fois par semaine, exactement comme les challenges et programmes courts recommandés par les coachs pour tonifier le corps rapidement.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contenu Abonnement Section -->
+    <section id="contenu" class="contenu-abonnement">
+        <div class="container">
+            <p class="section-kicker">Ce que contient l'abonnement</p>
+            <h2>Un abonnement pense pour maintenir ton elan, pas pour te noyer.</h2>
+            <p class="abonnement-intro">Ton acces fonctionne en continu: tu gardes le contenu, les parcours et les nouveaux ajouts tant que tu es membre.</p>
+            <p class="abonnement-intro">A l'interieur, tu avances avec :</p>
+
+            <div class="contenu-grid">
+                <div class="contenu-card animate-fade-in-up">
+                    <h3>Circuits 15 minutes guides en video</h3>
+                    <p>Entraînements complets, bas du corps, haut du corps, cardio, renfo, mobilité : tu choisis ton focus, nous gérons la structure et le tempo.</p>
+                </div>
+                <div class="contenu-card animate-fade-in-up delay-100">
+                    <h3>Plusieurs niveaux d'intensite</h3>
+                    <p>Des versions débutant, intermédiaire et avancé pour que tu puisses démarrer là où tu en es et monter en puissance au fil des semaines.</p>
+                </div>
+                <div class="contenu-card animate-fade-in-up delay-200">
+                    <h3>Plans de progression</h3>
+                    <p>Des parcours "Départ", "Reconstruction", "Sèche", "Tonification globale" inspirés des approches de programmes mensuels et challenges.</p>
+                </div>
+                <div class="contenu-card animate-fade-in-up delay-300">
+                    <h3>Nouvelles seances regulieres</h3>
+                    <p>Pour éviter la routine et garder la motivation, à l'image des plateformes de cours en ligne qui renouvellent souvent leurs workouts.</p>
+                </div>
+                <div class="contenu-card animate-fade-in-up delay-400">
+                    <h3>Communaute privee</h3>
+                    <p>Espace d'échange, check-ins, défis collectifs : tu n'es plus seul dans ton salon, tu fais partie d'une cellule qui avance.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pour qui Section -->
+    <section class="pour-qui">
+        <div class="container">
+            <p class="section-kicker">Alignement</p>
+            <h2>Pour qui LA CELLULE devient vite evidente.</h2>
+            <div class="pour-qui-content">
+                <div class="pour-qui-ideal animate-fade-in-left">
+                    <h3>LA CELLULE est faite pour toi si :</h3>
+                    <ul>
+                        <li>Tu manques de temps, mais tu refuses d'accepter un corps "en standby"</li>
+                        <li>Tu n'aimes pas (ou plus) la salle de sport, les trajets, l'ambiance, les regards</li>
+                        <li>Tu veux un cadre clair, sans réfléchir : tu ouvres la séance et tu exécutes</li>
+                        <li>Tu veux ressentir des effets rapides sur la tonicité, le souffle et l'énergie, comme ce qu'on observe avec les programmes complets de 15 minutes bien construits</li>
+                    </ul>
+                </div>
+                <div class="pour-qui-pas animate-fade-in-right">
+                    <h3>Elle n'est pas pour toi si :</h3>
+                    <ul>
+                        <li>Tu cherches une énième app que tu ouvres deux fois</li>
+                        <li>Tu n'es pas prêt à te donner 15 vraies minutes, concentrées, plusieurs fois par semaine</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Structure Séance Section -->
+    <section class="structure-seance">
+        <div class="container">
+            <p class="section-kicker">Execution claire</p>
+            <h2>La structure type d'une seance, pour savoir exactement ou tu vas.</h2>
+            <p class="structure-intro">Chaque séance suit une logique simple et efficace, inspirée des circuits training validés par les coachs :</p>
+
+            <div class="structure-timeline">
+                <div class="timeline-item animate-fade-in-left">
+                    <div class="timeline-marker">🚀</div>
+                    <div class="timeline-content">
+                        <h3>2–3 minutes d'activation</h3>
+                        <p>Pour réveiller le corps et chauffer les articulations.</p>
+                    </div>
+                </div>
+                <div class="timeline-item animate-fade-in-right delay-200">
+                    <div class="timeline-marker">💪</div>
+                    <div class="timeline-content">
+                        <h3>Bloc central en circuit</h3>
+                        <p>4 à 6 exercices enchaînés (renfo + cardio + gainage), avec temps d'effort et de récupération calibrés.</p>
+                    </div>
+                </div>
+                <div class="timeline-item animate-fade-in-left delay-400">
+                    <div class="timeline-marker">🧘</div>
+                    <div class="timeline-content">
+                        <h3>Retour au calme express</h3>
+                        <p>Respiration + quelques étirements ciblés, pour récupérer sans exploser ta journée.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="structure-conclusion animate-scale-in delay-500">
+                <p><strong>Tu coupes, tu donnes tout, tu ressors. 15 minutes plus tard, tu as coché ta case du jour.</strong></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modèle Abonnement Section -->
+    <section class="modele-abonnement">
+        <div class="container">
+            <p class="section-kicker">Engagement durable</p>
+            <h2>Le modele d'abonnement pour rester dans la dynamique.</h2>
+            <p class="abonnement-philo">Un abonnement récurrent n'est pas là pour t'enchaîner, mais pour te porter :</p>
+
+            <div class="abonnement-benefits">
+                <div class="benefit-item animate-fade-in-up">
+                    <h3>📅 Cadre continu</h3>
+                    <p>Tu sais que tes séances, tes circuits et tes nouveaux contenus t'attendent chaque mois, comme dans les abonnements de coaching en ligne les plus efficaces.</p>
+                </div>
+                <div class="benefit-item animate-fade-in-up delay-200">
+                    <h3>🎯 Base durable</h3>
+                    <p>Pas un "programme one shot" que tu termines puis oublies, mais une base sur laquelle tu peux t'appuyer toute l'année.</p>
+                </div>
+            </div>
+
+            <p class="abonnement-conclusion animate-fade-in-up delay-400">Tu peux arrêter quand tu veux, mais le vrai changement arrive quand tu acceptes que le mouvement fasse partie de ton identité, pas juste de ta to-do list.</p>
+            <p class="pricing-note animate-fade-in-up delay-500">Abonnement recurrent, acces continu, engagement simple a comprendre avant ton passage sur Stripe.</p>
+        </div>
+    </section>
+
+    <!-- Appel à l'action final -->
+    <section class="final-cta">
+        <div class="container">
+            <p class="section-kicker section-kicker-light">Passage a l'action</p>
+            <h2>15 minutes. Une mission. Une nouvelle ligne de conduite.</h2>
+            <p class="final-message">Tu peux rester dans le cycle "je recommence lundi", ou choisir une methode qui simplifie l'action, augmente la repetition et rend tes efforts beaucoup plus confortables a tenir.</p>
+            <div class="final-cta-actions">
+                <a href="https://buy.stripe.com/5kQ8wR908gQje57cSt2sM00" class="cta-button cta-button-large">Activer mon acces maintenant</a>
+                <p class="final-cta-meta">Acces immediat apres achat. Compatible mobile. Cadre progressif et intense.</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="mobile-cta-bar" aria-label="Action rapide mobile">
+        <a href="https://buy.stripe.com/5kQ8wR908gQje57cSt2sM00" class="cta-button mobile-cta-button">Rejoindre LA CELLULE</a>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 LA CELLULE. Tous droits réservés.</p>
+            <p>Plateforme qui lutte pour le bien-être</p>
+        </div>
+    </footer>
+
+    <script>
+        // Charger les résultats clients depuis images/content
+        document.addEventListener('DOMContentLoaded', async () => {
+            try {
+                await ClientResults.displayClientResults('results-container');
+            } catch (error) {
+                console.error('Erreur lors du chargement des résultats:', error);
+                // Fallback: afficher un message d'erreur
+                document.getElementById('results-container').innerHTML = '<p>Les résultats sont en cours de chargement...</p>';
+            }
+        });
+    </script>
+</body>
+</html>

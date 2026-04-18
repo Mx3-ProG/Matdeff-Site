@@ -4,7 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Créer un Compte - LA CELLULE</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="landing-style.css">
+    <script src="images/logo_favicon/logo_manager.js" defer></script>
 </head>
 <body>
     <!-- Navigation -->
@@ -12,7 +16,7 @@
         <div class="navbar-container">
             <h1 class="logo">LA CELLULE</h1>
             <div class="nav-menu" id="navMenu">
-                <a href="landing-page.html" class="nav-link">Accueil</a>
+                <a href="/" class="nav-link">Accueil</a>
                 <a href="signup.html" class="nav-link">Créer un Compte</a>
                 <a href="dashboard.html" class="nav-link">Mon Espace</a>
             </div>
@@ -25,7 +29,7 @@
     </nav>
 
     <!-- Signup Section -->
-    <section class="hero" style="min-height: auto; padding: 60px 20px;">
+    <section class="hero signup-hero-compact">
         <div class="form-container">
             <h2>Créer Votre Compte</h2>
             <form id="signupForm">
@@ -62,8 +66,8 @@
                 <button type="submit" class="submit-btn">Créer mon Compte</button>
             </form>
 
-            <p style="text-align: center; margin-top: 20px; color: #666666;">
-                Vous avez déjà un compte? <a href="dashboard.html" style="color: #d32f2f;">Connectez-vous</a>
+            <p class="auth-helper-text">
+                Vous avez déjà un compte? <a href="dashboard.html" class="auth-helper-link">Connectez-vous</a>
             </p>
         </div>
     </section>
@@ -93,7 +97,7 @@
 
     <!-- Footer -->
     <footer class="footer">
-        <p>&copy; 2026 La Cellule 4C. Tous droits réservés.</p>
+        <p>&copy; 2026 La Cellule. Tous droits réservés.</p>
         <p>Plateforme sécurisée et vérifiée</p>
     </footer>
 

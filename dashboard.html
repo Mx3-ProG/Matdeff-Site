@@ -4,7 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tableau de Bord - LA CELLULE</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="landing-style.css">
+    <script src="images/logo_favicon/logo_manager.js" defer></script>
 </head>
 <body>
     <!-- Navigation -->
@@ -12,7 +16,7 @@
         <div class="navbar-container">
             <h1 class="logo">LA CELLULE</h1>
             <div class="nav-menu" id="navMenu">
-                <a href="landing-page.html" class="nav-link">Accueil</a>
+                <a href="/" class="nav-link">Accueil</a>
                 <a href="signup.html" class="nav-link">Créer un Compte</a>
                 <a href="dashboard.html" class="nav-link">Mon Espace</a>
             </div>
@@ -29,11 +33,11 @@
         <div class="dashboard-header">
             <h2 id="welcome-message">Bienvenue sur votre Tableau de Bord</h2>
             <p id="user-info">Connectez-vous pour accéder à votre espace personnel</p>
-            <button class="logout-btn" id="logout-btn" style="display: none; margin-top: 15px;">Se Déconnecter</button>
+            <button class="logout-btn is-hidden mt-15" id="logout-btn">Se Déconnecter</button>
         </div>
 
         <!-- Dashboard Content -->
-        <div id="dashboard-content" style="display: none;">
+        <div id="dashboard-content" class="is-hidden">
             <div class="dashboard-grid">
                 <!-- Profil Card -->
                 <div class="dashboard-card">
@@ -47,8 +51,8 @@
                 <div class="dashboard-card">
                     <h3>📦 Votre Accès</h3>
                     <p>Vous avez un accès complet à LA CELLULE 4C</p>
-                    <p style="color: #d32f2f; font-weight: bold;">✓ Actif</p>
-                    <a href="https://buy.stripe.com/5kQ8wR908gQje57cSt2sM00" class="cta-button" style="display: inline-block; margin-top: 10px;">Accéder au Produit</a>
+                    <p class="status-active">✓ Actif</p>
+                    <a href="https://buy.stripe.com/5kQ8wR908gQje57cSt2sM00" class="cta-button cta-inline">Accéder au Produit</a>
                 </div>
 
                 <!-- Statistiques Card -->
@@ -56,14 +60,14 @@
                     <h3>📊 Statistiques</h3>
                     <p><strong>Dernière connexion:</strong> <span id="last-login">Aujourd'hui</span></p>
                     <p><strong>Progression:</strong> <span id="progress">0%</span></p>
-                    <p><strong>Statut:</strong> <span style="color: #d32f2f; font-weight: bold;">Membre Actif</span></p>
+                    <p><strong>Statut:</strong> <span class="status-active">Membre Actif</span></p>
                 </div>
 
                 <!-- Ressources Card -->
                 <div class="dashboard-card">
                     <h3>📚 Ressources</h3>
                     <p>Accédez à tous les contenus premium:</p>
-                    <ul style="margin-top: 10px; padding-left: 20px;">
+                    <ul class="resource-list">
                         <li>Guide complet PDF</li>
                         <li>Vidéos d'entraînement</li>
                         <li>Programmes personnalisés</li>
@@ -81,7 +85,7 @@
                 <!-- Paramètres Card -->
                 <div class="dashboard-card">
                     <h3>⚙️ Paramètres</h3>
-                    <button class="logout-btn" id="logout-btn-card" style="width: 100%; margin-top: 10px;">Se Déconnecter</button>
+                    <button class="logout-btn w-full mt-15" id="logout-btn-card">Se Déconnecter</button>
                 </div>
             </div>
 
@@ -116,8 +120,8 @@
                     <button type="submit" class="submit-btn">Se Connecter</button>
                 </form>
 
-                <p style="text-align: center; margin-top: 20px; color: #666666;">
-                    Pas encore de compte? <a href="signup.html" style="color: #d32f2f;">Créez-en un</a>
+                <p class="auth-helper-text">
+                    Pas encore de compte? <a href="signup.html" class="auth-helper-link">Créez-en un</a>
                 </p>
             </div>
         </div>
@@ -125,8 +129,8 @@
 
     <!-- Footer -->
     <footer class="footer">
-        <p>&copy; 2026 La Cellule 4C. Tous droits réservés.</p>
-        <p>Plateforme sécurisée et vérifiée</p>
+        <p>&copy; 2026 La Cellule. Tous droits réservés.</p>
+        <p>La plateforme qui lutte pour votre réussite!</p>
     </footer>
 
     <script>

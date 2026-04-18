@@ -6,7 +6,7 @@ Ce dépôt contient le site web de `Matdeff Site`, conçu pour présenter une la
 
 ```
 Matdeff Site/
-├── landing-page.html              # Page d'accueil / landing page principale
+├── index.html                     # Page d'accueil / landing page principale
 ├── landing-style.css              # Styles CSS associés à la page de présentation
 ├── landing-style-accessible.css   # Styles CSS accessibles alternative
 ├── dashboard.html                 # Page de tableau de bord (dashboard)
@@ -70,9 +70,9 @@ Puis ouvrir votre navigateur sur `http://localhost:8080`
 
 ## Routeurs disponibles
 
-Une fois le serveur lancé, vous pouvez accéder à :
+Une fois le site lancé, vous pouvez accéder à :
 
-- **Landing Page (Accueil)** : http://localhost:8080/ ou /landing-page.html
+- **Landing Page (Accueil)** : http://localhost:8080/
 - **Dashboard** : http://localhost:8080/dashboard
 - **Inscription** : http://localhost:8080/signup
 
@@ -84,7 +84,7 @@ Une fois le serveur lancé, vous pouvez accéder à :
 npm start
 ```
 
-Le serveur se relance automatiquement. Modifiez les fichiers HTML/CSS et rafraîchissez le navigateur (Ctrl+R ou Cmd+R).
+Le site est servi en mode statique. Modifiez les fichiers HTML/CSS et rafraîchissez le navigateur (Ctrl+R ou Cmd+R).
 
 ### Debugging avec VS Code
 
@@ -127,8 +127,8 @@ heroku logs --tail
 ## Scripts npm
 
 ```bash
-npm start      # Lancer le serveur en mode production
-npm run dev    # Lancer le serveur en mode développement
+npm start      # Lancer le serveur statique local (port 8080)
+npm run dev    # Lancer le serveur statique local (port 8080)
 npm test       # Exécuter les tests (non configuré pour l'instant)
 ```
 
