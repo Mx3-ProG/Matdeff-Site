@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cours - LA CELLULE</title>
+    <link rel="icon" type="image/jpeg" href="images/logo_favicon/Logo_Matdeff.JPG">
+    <link rel="shortcut icon" href="images/logo_favicon/Logo_Matdeff.JPG">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="landing-style.css">
+    <script src="images/logo_favicon/logo_manager.js" defer></script>
+</head>
+<body class="user-area" data-page="cours">
+    <nav class="navbar">
+        <div class="navbar-container">
+            <h1 class="logo">LA CELLULE</h1>
+            <div class="nav-menu" id="navMenu">
+                <a href="dashboard.html" class="nav-link">Dashboard</a>
+                <a href="cours.html" class="nav-link nav-link-active">Cours</a>
+                <a href="ressources.html" class="nav-link">Ressources</a>
+                <a href="supports.html" class="nav-link">Supports</a>
+                <a href="statistiques.html" class="nav-link">Statistiques</a>
+                <a href="parametres.html" class="nav-link">Paramètres</a>
+                <a href="outils.html" class="nav-link">Outils</a>
+                <a href="/" class="nav-link nav-link-home">Accueil public</a>
+            </div>
+            <button class="logout-btn page-logout" id="logout-btn" type="button">Se Déconnecter</button>
+            <button class="hamburger" id="hamburger" type="button" aria-label="Ouvrir le menu" aria-controls="navMenu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <main class="dashboard-container user-page-shell">
+        <header class="dashboard-header">
+            <p class="section-kicker">Espace utilisateur</p>
+            <h2>Vos Cours</h2>
+            <p id="user-welcome">Connectez-vous pour accéder à vos cours.</p>
+        </header>
+
+        <section id="protected-content" class="user-protected is-hidden">
+            <p class="user-v2-note">V2: ces modules seront alimentés automatiquement depuis l'API de contenu.</p>
+            <div id="dynamic-content" class="user-page-grid" aria-live="polite">
+                <article class="user-placeholder-card" data-access-level="free">
+                    <span class="access-badge access-badge-free" data-access-label>Free</span>
+                    <h3>Module 1 - Fondations</h3>
+                    <p>Placeholder: structure des cours d'entrée de programme.</p>
+                </article>
+                <article class="user-placeholder-card" data-access-level="premium">
+                    <span class="access-badge access-badge-premium" data-access-label>Premium</span>
+                    <h3>Module 2 - Progression</h3>
+                    <p>Placeholder: séances guidées de montée en intensité.</p>
+                </article>
+                <article class="user-placeholder-card" data-access-level="premium">
+                    <span class="access-badge access-badge-premium" data-access-label>Premium</span>
+                    <h3>Module 3 - Consolidation</h3>
+                    <p>Placeholder: routines de maintien et d'autonomie.</p>
+                </article>
+            </div>
+        </section>
+
+        <section id="login-section">
+            <div class="form-container">
+                <h2>Connexion requise</h2>
+                <p>Cette page est réservée aux utilisateurs connectés.</p>
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label for="login-email">Email</label>
+                        <input type="email" id="login-email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="login-password">Mot de passe</label>
+                        <input type="password" id="login-password" name="password" required>
+                    </div>
+                    <button type="submit" class="submit-btn">Se Connecter</button>
+                </form>
+                <p id="login-status" class="auth-helper-text" aria-live="polite"></p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2026 La Cellule. Tous droits réservés.</p>
+    </footer>
+
+    <script type="module">
+        import { initUserPage } from './js/user-pages.js';
+        initUserPage();
+    </script>
+</body>
+</html>

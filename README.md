@@ -1,6 +1,6 @@
 # Matdeff Site
 
-Ce dépôt contient le site web de `Matdeff Site`, conçu pour présenter une landing page, un tableau de bord et un formulaire d'inscription. L'application est servie via **Express.js** et peut être déployée en ligne ou exécutée localement.
+Ce dépôt contient le site web de `Matdeff Site`, conçu pour présenter une landing page, un tableau de bord et un formulaire d'inscription. L'application est servie via **Node.js + Express** et expose des routes API pour **Supabase** (auth/membership) et **Stripe** (checkout/webhook).
 
 ## Structure du projet
 
@@ -45,9 +45,13 @@ cd "Site internet/Matdeff Site"
 npm install
 ```
 
-Cela installera :
-- **Express.js** : serveur web Node.js
-- **CORS** : gestion des requêtes cross-origin
+### 3. Configurer l'environnement
+
+```bash
+cp .env.example .env
+```
+
+Puis renseignez les variables Supabase et Stripe dans `.env`.
 
 ## Exécution locale
 
@@ -68,13 +72,14 @@ npm start
 
 Puis ouvrir votre navigateur sur `http://localhost:8080`
 
-## Routeurs disponibles
+## Routes disponibles
 
 Une fois le site lancé, vous pouvez accéder à :
 
 - **Landing Page (Accueil)** : http://localhost:8080/
 - **Dashboard** : http://localhost:8080/dashboard
 - **Inscription** : http://localhost:8080/signup
+- **Healthcheck API** : http://localhost:8080/api/health
 
 ## Développement
 
@@ -84,7 +89,7 @@ Une fois le site lancé, vous pouvez accéder à :
 npm start
 ```
 
-Le site est servi en mode statique. Modifiez les fichiers HTML/CSS et rafraîchissez le navigateur (Ctrl+R ou Cmd+R).
+Le site est servi par `server.js`. Modifiez les fichiers HTML/CSS/JS et rafraîchissez le navigateur (Ctrl+R ou Cmd+R).
 
 ### Debugging avec VS Code
 
@@ -127,8 +132,8 @@ heroku logs --tail
 ## Scripts npm
 
 ```bash
-npm start      # Lancer le serveur statique local (port 8080)
-npm run dev    # Lancer le serveur statique local (port 8080)
+npm start      # Lancer le serveur Express (port 8080)
+npm run dev    # Alias de start
 npm test       # Exécuter les tests (non configuré pour l'instant)
 ```
 
@@ -136,7 +141,8 @@ npm test       # Exécuter les tests (non configuré pour l'instant)
 
 - **Frontend** : HTML5, CSS3, JavaScript (ES6+)
 - **Backend** : Node.js, Express.js
-- **Gestion des requêtes** : CORS
+- **Auth & base de données** : Supabase
+- **Paiement** : Stripe
 
 ## Fonctionnalités du client-side
 

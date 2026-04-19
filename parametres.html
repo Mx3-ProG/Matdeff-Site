@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paramètres - LA CELLULE</title>
+    <link rel="icon" type="image/jpeg" href="images/logo_favicon/Logo_Matdeff.JPG">
+    <link rel="shortcut icon" href="images/logo_favicon/Logo_Matdeff.JPG">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="landing-style.css">
+    <script src="images/logo_favicon/logo_manager.js" defer></script>
+</head>
+<body class="user-area" data-page="parametres">
+    <nav class="navbar">
+        <div class="navbar-container">
+            <h1 class="logo">LA CELLULE</h1>
+            <div class="nav-menu" id="navMenu">
+                <a href="dashboard.html" class="nav-link">Dashboard</a>
+                <a href="cours.html" class="nav-link">Cours</a>
+                <a href="ressources.html" class="nav-link">Ressources</a>
+                <a href="supports.html" class="nav-link">Supports</a>
+                <a href="statistiques.html" class="nav-link">Statistiques</a>
+                <a href="parametres.html" class="nav-link nav-link-active">Paramètres</a>
+                <a href="outils.html" class="nav-link">Outils</a>
+                <a href="/" class="nav-link nav-link-home">Accueil public</a>
+            </div>
+            <button class="logout-btn page-logout" id="logout-btn" type="button">Se Déconnecter</button>
+            <button class="hamburger" id="hamburger" type="button" aria-label="Ouvrir le menu" aria-controls="navMenu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <main class="dashboard-container user-page-shell">
+        <header class="dashboard-header">
+            <p class="section-kicker">Espace utilisateur</p>
+            <h2>Paramètres</h2>
+            <p id="user-welcome">Connectez-vous pour gérer vos préférences.</p>
+        </header>
+
+        <section id="protected-content" class="user-protected is-hidden">
+            <article class="user-placeholder-card settings-panel" data-access-level="free">
+                <span class="access-badge access-badge-free" data-access-label>Free</span>
+                <h3>Couleur du thème</h3>
+                <p>Choisissez une couleur principale pour personnaliser votre expérience.</p>
+                <div class="theme-choices" role="group" aria-label="Choix de couleur du thème">
+                    <button type="button" class="theme-choice theme-choice-red" data-theme-choice="red" aria-pressed="false">Rouge</button>
+                    <button type="button" class="theme-choice theme-choice-blue" data-theme-choice="blue" aria-pressed="false">Bleu</button>
+                    <button type="button" class="theme-choice theme-choice-green" data-theme-choice="green" aria-pressed="false">Vert</button>
+                    <button type="button" class="theme-choice theme-choice-orange" data-theme-choice="orange" aria-pressed="false">Orange</button>
+                    <button type="button" class="theme-choice theme-choice-black" data-theme-choice="black" aria-pressed="false">Noir</button>
+                </div>
+                <p class="settings-meta">Thème actif: <strong id="theme-active-label">red</strong></p>
+            </article>
+        </section>
+
+        <section id="login-section">
+            <div class="form-container">
+                <h2>Connexion requise</h2>
+                <p>Cette page est réservée aux utilisateurs connectés.</p>
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label for="login-email">Email</label>
+                        <input type="email" id="login-email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="login-password">Mot de passe</label>
+                        <input type="password" id="login-password" name="password" required>
+                    </div>
+                    <button type="submit" class="submit-btn">Se Connecter</button>
+                </form>
+                <p id="login-status" class="auth-helper-text" aria-live="polite"></p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2026 La Cellule. Tous droits réservés.</p>
+    </footer>
+
+    <script type="module">
+        import { initUserPage } from './js/user-pages.js';
+        initUserPage();
+    </script>
+</body>
+</html>

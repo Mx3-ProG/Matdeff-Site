@@ -21,6 +21,12 @@
                 <a href="/" class="nav-link">Accueil</a>
                 <a href="signup.html" class="nav-link">Créer un Compte</a>
                 <a href="dashboard.html" class="nav-link">Mon Espace</a>
+                <a href="cours.html" class="nav-link">Cours</a>
+                <a href="ressources.html" class="nav-link">Ressources</a>
+                <a href="supports.html" class="nav-link">Supports</a>
+                <a href="statistiques.html" class="nav-link">Statistiques</a>
+                <a href="parametres.html" class="nav-link">Paramètres</a>
+                <a href="outils.html" class="nav-link">Outils</a>
             </div>
             <div class="hamburger" id="hamburger">
                 <span></span>
@@ -68,6 +74,8 @@
                 <button type="submit" class="submit-btn">Créer mon Compte</button>
             </form>
 
+            <p id="signup-status" class="auth-helper-text" aria-live="polite"></p>
+
             <p class="auth-helper-text">
                 Vous avez déjà un compte? <a href="dashboard.html" class="auth-helper-link">Connectez-vous</a>
             </p>
@@ -103,7 +111,9 @@
         <p>Plateforme sécurisée et vérifiée</p>
     </footer>
 
-    <script>
+    <script type="module">
+        import { signUpWithEmail } from './js/auth.js';
+
         // Menu burger toggle
         const hamburger = document.getElementById('hamburger');
         const navMenu = document.getElementById('navMenu');
@@ -124,36 +134,47 @@
             });
         });
 
+        function setStatus(message, isError) {
+            const status = document.getElementById('signup-status');
+            status.textContent = message;
+            status.style.color = isError ? '#ff5a5a' : '#2ecc71';
+        }
+
         // Formulaire de signup
-        document.getElementById('signupForm').addEventListener('submit', function(e) {
+        document.getElementById('signupForm').addEventListener('submit', async function(e) {
             e.preventDefault();
 
-            const firstname = document.getElementById('firstname').value;
-            const lastname = document.getElementById('lastname').value;
-            const email = document.getElementById('email').value;
+            const firstname = document.getElementById('firstname').value.trim();
+            const lastname = document.getElementById('lastname').value.trim();
+            const email = document.getElementById('email').value.trim();
             const password = document.getElementById('password').value;
             const confirmPassword = document.getElementById('confirm-password').value;
+            const phone = document.getElementById('phone').value.trim();
 
             // Validation
             if (password !== confirmPassword) {
-                alert('Les mots de passe ne correspondent pas!');
+                setStatus('Les mots de passe ne correspondent pas.', true);
                 return;
             }
 
-            // Stocker les données dans localStorage
-            const userData = {
-                firstname,
-                lastname,
-                email,
-                password,
-                joinDate: new Date().toLocaleDateString('fr-FR')
-            };
+            try {
+                setStatus('Creation du compte en cours...', false);
+                await signUpWithEmail({
+                    firstName: firstname,
+                    lastName: lastname,
+                    email,
+                    password,
+                    phone
+                });
 
-            localStorage.setItem('user', JSON.stringify(userData));
-            localStorage.setItem('isLoggedIn', 'true');
-
-            alert('Compte créé avec succès! Redirection vers votre tableau de bord...');
-            window.location.href = 'dashboard.html';
+                setStatus('Compte cree. Verifie ton email puis connecte-toi.', false);
+                document.getElementById('signupForm').reset();
+                setTimeout(() => {
+                    window.location.href = 'dashboard.html';
+                }, 1200);
+            } catch (error) {
+                setStatus(error.message || 'Erreur creation compte.', true);
+            }
         });
     </script>
 </body>

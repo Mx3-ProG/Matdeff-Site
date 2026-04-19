@@ -12,21 +12,33 @@
     <link rel="stylesheet" href="landing-style.css">
     <script src="images/logo_favicon/logo_manager.js" defer></script>
 </head>
-<body>
+<body class="user-area" data-page="dashboard">
     <!-- Navigation -->
     <nav class="navbar">
         <div class="navbar-container">
             <h1 class="logo">LA CELLULE</h1>
             <div class="nav-menu" id="navMenu">
-                <a href="/" class="nav-link">Accueil</a>
-                <a href="signup.html" class="nav-link">Créer un Compte</a>
-                <a href="dashboard.html" class="nav-link">Mon Espace</a>
+                <a href="dashboard.html" class="nav-link nav-link-active">Dashboard</a>
+                <a href="cours.html" class="nav-link">Cours</a>
+                <a href="ressources.html" class="nav-link">Ressources</a>
+                <a href="supports.html" class="nav-link">Supports</a>
+                <a href="statistiques.html" class="nav-link">Statistiques</a>
+                <a href="parametres.html" class="nav-link">Paramètres</a>
+                <a href="outils.html" class="nav-link">Outils</a>
+                <span class="nav-divider" aria-hidden="true"></span>
+                <a href="#card-profile" class="nav-link nav-link-section">Profil</a>
+                <a href="#card-access" class="nav-link nav-link-section">Accès</a>
+                <a href="#card-stats" class="nav-link nav-link-section">Stats</a>
+                <a href="#card-resources" class="nav-link nav-link-section">Ressources Dashboard</a>
+                <a href="#card-support" class="nav-link nav-link-section">Support</a>
+                <a href="#card-settings" class="nav-link nav-link-section">Paramètres Dashboard</a>
+                <a href="/" class="nav-link nav-link-home">Accueil public</a>
             </div>
-            <div class="hamburger" id="hamburger">
+            <button class="hamburger" id="hamburger" type="button" aria-label="Ouvrir le menu" aria-controls="navMenu" aria-expanded="false">
                 <span></span>
                 <span></span>
                 <span></span>
-            </div>
+            </button>
         </div>
     </nav>
 
@@ -42,7 +54,7 @@
         <div id="dashboard-content" class="is-hidden">
             <div class="dashboard-grid">
                 <!-- Profil Card -->
-                <div class="dashboard-card">
+                <div class="dashboard-card" id="card-profile">
                     <h3>👤 Mon Profil</h3>
                     <p><strong>Nom:</strong> <span id="display-name"></span></p>
                     <p><strong>Email:</strong> <span id="display-email"></span></p>
@@ -50,23 +62,25 @@
                 </div>
 
                 <!-- Accès Produit Card -->
-                <div class="dashboard-card">
+                <div class="dashboard-card dashboard-nav-card" id="card-access" data-go-to="cours.html" role="link" tabindex="0" aria-label="Ouvrir la page Cours">
                     <h3>📦 Votre Accès</h3>
-                    <p>Vous avez un accès complet à LA CELLULE 4C</p>
-                    <p class="status-active">✓ Actif</p>
-                    <a href="https://buy.stripe.com/5kQ8wR908gQje57cSt2sM00" class="cta-button cta-inline">Accéder au Produit</a>
+                    <p id="access-description">Connectez-vous pour afficher votre plan</p>
+                    <p id="membership-badge" class="status-active">Plan non charge</p>
+                    <a href="cours.html" class="cta-button cta-inline cta-button-secondary">Aller aux Cours</a>
+                    <button id="upgrade-button" class="cta-button cta-inline is-hidden" type="button">Passer premium (39,99€/mois)</button>
                 </div>
 
                 <!-- Statistiques Card -->
-                <div class="dashboard-card">
+                <div class="dashboard-card dashboard-nav-card" id="card-stats" data-go-to="statistiques.html" role="link" tabindex="0" aria-label="Ouvrir la page Statistiques">
                     <h3>📊 Statistiques</h3>
                     <p><strong>Dernière connexion:</strong> <span id="last-login">Aujourd'hui</span></p>
                     <p><strong>Progression:</strong> <span id="progress">0%</span></p>
-                    <p><strong>Statut:</strong> <span class="status-active">Membre Actif</span></p>
+                    <p><strong>Statut:</strong> <span id="status-label" class="status-active">Membre non connecte</span></p>
+                    <a href="statistiques.html" class="cta-button cta-inline cta-button-secondary">Voir mes Statistiques</a>
                 </div>
 
                 <!-- Ressources Card -->
-                <div class="dashboard-card">
+                <div class="dashboard-card dashboard-nav-card" id="card-resources" data-go-to="ressources.html" role="link" tabindex="0" aria-label="Ouvrir la page Ressources">
                     <h3>📚 Ressources</h3>
                     <p>Accédez à tous les contenus premium:</p>
                     <ul class="resource-list">
@@ -74,19 +88,24 @@
                         <li>Vidéos d'entraînement</li>
                         <li>Programmes personnalisés</li>
                     </ul>
+                    <a href="ressources.html" class="cta-button cta-inline cta-button-secondary">Ouvrir les Ressources</a>
                 </div>
 
                 <!-- Support Card -->
-                <div class="dashboard-card">
+                <div class="dashboard-card dashboard-nav-card" id="card-support" data-go-to="supports.html" role="link" tabindex="0" aria-label="Ouvrir la page Supports">
                     <h3>💬 Support</h3>
                     <p>Besoin d'aide? Notre équipe est disponible pour vous.</p>
                     <p><strong>Email:</strong> support@lacellule.fr</p>
                     <p><strong>Horaires:</strong> Lun-Ven 9h-18h</p>
+                    <p><strong>Lien parrainage:</strong> <span id="referral-link">Disponible apres connexion</span></p>
+                    <a href="supports.html" class="cta-button cta-inline cta-button-secondary">Accéder au Support</a>
                 </div>
 
                 <!-- Paramètres Card -->
-                <div class="dashboard-card">
+                <div class="dashboard-card dashboard-nav-card" id="card-settings" data-go-to="parametres.html" role="link" tabindex="0" aria-label="Ouvrir la page Paramètres">
                     <h3>⚙️ Paramètres</h3>
+                    <a href="parametres.html" class="cta-button cta-inline cta-button-secondary">Gérer mes Paramètres</a>
+                    <a href="outils.html" class="cta-button cta-inline cta-button-secondary">Voir les Outils</a>
                     <button class="logout-btn w-full mt-15" id="logout-btn-card">Se Déconnecter</button>
                 </div>
             </div>
@@ -122,6 +141,8 @@
                     <button type="submit" class="submit-btn">Se Connecter</button>
                 </form>
 
+                <p id="login-status" class="auth-helper-text" aria-live="polite"></p>
+
                 <p class="auth-helper-text">
                     Pas encore de compte? <a href="signup.html" class="auth-helper-link">Créez-en un</a>
                 </p>
@@ -135,53 +156,116 @@
         <p>La plateforme qui lutte pour votre réussite!</p>
     </footer>
 
-    <script>
+    <script type="module">
+        import {
+            signInWithEmail,
+            signOut,
+            getCurrentUserWithMembership,
+            createStripeCheckoutSession,
+            getReferralLink
+        } from './js/auth.js';
+
         // Menu burger toggle
         const hamburger = document.getElementById('hamburger');
         const navMenu = document.getElementById('navMenu');
+
+        function closeMenu() {
+            navMenu.classList.remove('active');
+            hamburger.classList.remove('active');
+            document.body.classList.remove('menu-open');
+            hamburger.setAttribute('aria-expanded', 'false');
+        }
 
         if (hamburger) {
             hamburger.addEventListener('click', function() {
                 navMenu.classList.toggle('active');
                 hamburger.classList.toggle('active');
+                document.body.classList.toggle('menu-open');
+                hamburger.setAttribute('aria-expanded', navMenu.classList.contains('active') ? 'true' : 'false');
             });
         }
 
         const navLinks = document.querySelectorAll('.nav-link');
         navLinks.forEach(link => {
             link.addEventListener('click', function() {
-                navMenu.classList.remove('active');
-                hamburger.classList.remove('active');
+                closeMenu();
             });
         });
 
-        // Dashboard Logic
-        function checkLogin() {
-            const isLoggedIn = localStorage.getItem('isLoggedIn');
-            const user = localStorage.getItem('user');
-
-            if (isLoggedIn === 'true' && user) {
-                const userData = JSON.parse(user);
-                displayDashboard(userData);
-            } else {
-                showLoginForm();
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape') {
+                closeMenu();
             }
+        });
+
+        const dashboardNavCards = document.querySelectorAll('.dashboard-nav-card[data-go-to]');
+        dashboardNavCards.forEach((card) => {
+            card.addEventListener('click', (event) => {
+                if (event.target.closest('a, button, input, textarea, select')) {
+                    return;
+                }
+
+                const target = card.getAttribute('data-go-to');
+                if (target) {
+                    window.location.href = target;
+                }
+            });
+
+            card.addEventListener('keydown', (event) => {
+                if (event.key !== 'Enter' && event.key !== ' ') {
+                    return;
+                }
+
+                event.preventDefault();
+                const target = card.getAttribute('data-go-to');
+                if (target) {
+                    window.location.href = target;
+                }
+            });
+        });
+
+        function setLoginStatus(message, isError) {
+            const status = document.getElementById('login-status');
+            status.textContent = message;
+            status.style.color = isError ? '#ff5a5a' : '#2ecc71';
         }
 
-        function displayDashboard(userData) {
+        function displayDashboard(payload) {
+            const user = payload.user;
+            const membership = payload.membership;
+            const metadata = user.user_metadata || {};
+
             document.getElementById('login-section').style.display = 'none';
             document.getElementById('dashboard-content').style.display = 'block';
-
-            const fullName = userData.firstname + ' ' + userData.lastname;
-
-            document.getElementById('welcome-message').textContent = `Bienvenue ${userData.firstname}! 👋`;
-            document.getElementById('user-info').textContent = `Vous êtes connecté avec: ${userData.email}`;
-            document.getElementById('display-name').textContent = fullName;
-            document.getElementById('display-email').textContent = userData.email;
-            document.getElementById('display-date').textContent = userData.joinDate;
-
-            // Afficher les boutons de déconnexion
             document.getElementById('logout-btn').style.display = 'inline-block';
+
+            const firstName = metadata.first_name || 'Membre';
+            const lastName = metadata.last_name || '';
+            const fullName = `${firstName} ${lastName}`.trim();
+            const tier = membership.tier === 'premium' ? 'premium' : 'free';
+
+            document.getElementById('welcome-message').textContent = `Bienvenue ${firstName}! 👋`;
+            document.getElementById('user-info').textContent = `Vous êtes connecté avec: ${user.email}`;
+            document.getElementById('display-name').textContent = fullName;
+            document.getElementById('display-email').textContent = user.email;
+            document.getElementById('display-date').textContent = new Date().toLocaleDateString('fr-FR');
+
+            const accessDescription = document.getElementById('access-description');
+            const membershipBadge = document.getElementById('membership-badge');
+            const statusLabel = document.getElementById('status-label');
+            const upgradeButton = document.getElementById('upgrade-button');
+
+            if (tier === 'premium') {
+                accessDescription.textContent = 'Accès complet premium sans publicité.';
+                membershipBadge.textContent = 'Plan Premium actif';
+                statusLabel.textContent = 'Premium';
+                upgradeButton.classList.add('is-hidden');
+            } else {
+                accessDescription.textContent = 'Mode gratuit actif: aperçu limité + publicités.';
+                membershipBadge.textContent = 'Plan Gratuit';
+                statusLabel.textContent = 'Free user';
+                upgradeButton.classList.remove('is-hidden');
+            }
         }
 
         function showLoginForm() {
@@ -190,40 +274,72 @@
             document.getElementById('logout-btn').style.display = 'none';
         }
 
+        async function loadDashboard() {
+            try {
+                const payload = await getCurrentUserWithMembership();
+                if (!payload) {
+                    showLoginForm();
+                    return;
+                }
+
+                displayDashboard(payload);
+
+                try {
+                    const referralLink = await getReferralLink();
+                    document.getElementById('referral-link').textContent = referralLink;
+                } catch (_error) {
+                    document.getElementById('referral-link').textContent = 'Lien indisponible pour le moment';
+                }
+            } catch (error) {
+                showLoginForm();
+                setLoginStatus(error.message || 'Session invalide.', true);
+            }
+        }
+
         // Form d'authentification
-        document.getElementById('loginForm').addEventListener('submit', function(e) {
+        document.getElementById('loginForm').addEventListener('submit', async function(e) {
             e.preventDefault();
 
-            const email = document.getElementById('login-email').value;
+            const email = document.getElementById('login-email').value.trim();
             const password = document.getElementById('login-password').value;
 
-            // Vérifier les données
-            const savedUser = localStorage.getItem('user');
-            if (savedUser) {
-                const userData = JSON.parse(savedUser);
-                if (email === userData.email && password === userData.password) {
-                    localStorage.setItem('isLoggedIn', 'true');
-                    checkLogin();
-                } else {
-                    alert('Email ou mot de passe incorrect!');
-                }
-            } else {
-                alert('Aucun compte trouvé. Veuillez créer un compte d\'abord.');
+            try {
+                setLoginStatus('Connexion en cours...', false);
+                await signInWithEmail({ email, password });
+                setLoginStatus('Connexion reussie.', false);
+                await loadDashboard();
+            } catch (error) {
+                setLoginStatus(error.message || 'Email ou mot de passe incorrect.', true);
             }
         });
 
         // Déconnexion
         const logoutBtns = document.querySelectorAll('.logout-btn');
         logoutBtns.forEach(btn => {
-            btn.addEventListener('click', function() {
-                localStorage.setItem('isLoggedIn', 'false');
-                alert('Vous êtes déconnecté. À bientôt!');
-                checkLogin();
+            btn.addEventListener('click', async function() {
+                try {
+                    await signOut();
+                } catch (_error) {
+                    // noop
+                }
+
+                showLoginForm();
+                setLoginStatus('Vous etes deconnecte.', false);
             });
         });
 
+        document.getElementById('upgrade-button').addEventListener('click', async () => {
+            try {
+                setLoginStatus('Redirection vers le paiement...', false);
+                const checkout = await createStripeCheckoutSession();
+                window.location.href = checkout.url;
+            } catch (error) {
+                setLoginStatus(error.message || 'Impossible de demarrer le paiement.', true);
+            }
+        });
+
         // Initialiser le dashboard
-        checkLogin();
+        loadDashboard();
     </script>
 </body>
 </html>

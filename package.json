@@ -2,19 +2,30 @@
   "name": "matdeff-site",
   "version": "1.0.0",
   "description": "Matdeff Site - Landing page, Dashboard et Signup",
-  "main": "index.html",
+  "main": "server.js",
   "scripts": {
-    "start": "npm run dev",
-    "dev": "serve . -l 8080",
+    "start": "node server.js",
+    "dev": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": ["matdeff", "site", "static", "vercel"],
+  "keywords": [
+    "matdeff",
+    "site",
+    "static",
+    "vercel"
+  ],
   "author": "Mx3-ProG",
   "license": "MIT",
   "engines": {
     "node": ">=14.0.0"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@supabase/supabase-js": "^2.50.0",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
+    "stripe": "^19.1.0"
+  },
   "devDependencies": {
     "serve": "^14.2.4"
   }
