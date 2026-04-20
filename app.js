@@ -141,6 +141,7 @@ class LaCelluleWebApp {
         hamburger?.addEventListener('click', () => {
             hamburger.classList.toggle('active');
             navMenu.classList.toggle('active');
+            hamburger.setAttribute('aria-expanded', hamburger.classList.contains('active') ? 'true' : 'false');
 
             // Animation du hamburger
             if (hamburger.classList.contains('active')) {
@@ -186,6 +187,7 @@ class LaCelluleWebApp {
         const navMenu = document.querySelector('.nav-menu');
 
         hamburger?.classList.remove('active');
+        hamburger?.setAttribute('aria-expanded', 'false');
         navMenu?.classList.remove('active');
         document.body.classList.remove('menu-open');
         document.body.style.overflow = '';
