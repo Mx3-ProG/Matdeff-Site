@@ -74,10 +74,17 @@
                     <input type="tel" id="phone" name="phone">
                 </div>
 
+                <div class="consent-row">
+                    <input type="checkbox" id="legal-consent" name="legal-consent" required>
+                    <label for="legal-consent">Je reconnais avoir lu la <a href="politique-confidentialite.html">politique de confidentialité</a> et les <a href="conditions-utilisation.html">conditions d’utilisation</a>, et être informé(e) du traitement de mes données personnelles.</label>
+                </div>
+
                 <button type="submit" class="submit-btn">Créer mon Compte</button>
             </form>
 
             <p id="signup-status" class="auth-helper-text" aria-live="polite"></p>
+
+            <p class="legal-inline-note">Les informations juridiques complètes sont disponibles dans les <a href="mentions-legales.html">mentions légales</a>, la <a href="politique-confidentialite.html">politique de confidentialité</a> et la page <a href="rgpd.html">RGPD</a>.</p>
 
             <p class="auth-helper-text">
                 Vous avez déjà un compte? <a href="dashboard.html" class="auth-helper-link">Connectez-vous</a>
@@ -112,6 +119,13 @@
     <footer class="footer">
         <p>&copy; 2026 La Cellule. Tous droits réservés.</p>
         <p>Plateforme sécurisée et vérifiée</p>
+        <div class="footer-links">
+            <a href="mentions-legales.html" class="footer-link">Mentions légales</a>
+            <a href="politique-confidentialite.html" class="footer-link">Politique de confidentialité</a>
+            <a href="rgpd.html" class="footer-link">RGPD</a>
+            <a href="conditions-utilisation.html" class="footer-link">Conditions d’utilisation</a>
+            <a href="politique-cookies.html" class="footer-link">Cookies et publicité</a>
+        </div>
     </footer>
 
     <script type="module">
@@ -153,10 +167,16 @@
             const password = document.getElementById('password').value;
             const confirmPassword = document.getElementById('confirm-password').value;
             const phone = document.getElementById('phone').value.trim();
+            const legalConsent = document.getElementById('legal-consent').checked;
 
             // Validation
             if (password !== confirmPassword) {
                 setStatus('Les mots de passe ne correspondent pas.', true);
+                return;
+            }
+
+            if (!legalConsent) {
+                setStatus('Tu dois accepter les informations juridiques avant de créer un compte.', true);
                 return;
             }
 

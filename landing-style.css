@@ -1266,6 +1266,59 @@ section {
   text-align: center;
 }
 
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem 1rem;
+  margin-top: 1rem;
+}
+
+.footer-link {
+  color: var(--gray-600);
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.footer-link:hover,
+.footer-link:focus-visible {
+  color: var(--accent);
+}
+
+.consent-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.consent-row input[type='checkbox'] {
+  margin-top: 0.3rem;
+  width: 18px;
+  height: 18px;
+  accent-color: var(--accent);
+}
+
+.consent-row label {
+  margin: 0;
+  color: var(--gray-700);
+  line-height: 1.5;
+}
+
+.legal-inline-note {
+  margin-top: var(--spacing-md);
+  text-align: center;
+  color: var(--gray-500);
+}
+
+.legal-inline-note a,
+.consent-row a {
+  color: var(--accent);
+  font-weight: 700;
+  text-decoration: none;
+}
+
 .form-container,
 .dashboard-header,
 .benefits {
