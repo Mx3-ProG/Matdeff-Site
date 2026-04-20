@@ -27,6 +27,26 @@
       "permanent": true
     },
     {
+      "source": "/Pub",
+      "destination": "/security_accompt",
+      "permanent": true
+    },
+    {
+      "source": "/Pub.html",
+      "destination": "/security_accompt",
+      "permanent": true
+    },
+    {
+      "source": "/pub",
+      "destination": "/security_accompt",
+      "permanent": true
+    },
+    {
+      "source": "/pub.html",
+      "destination": "/security_accompt",
+      "permanent": true
+    },
+    {
       "source": "/dashboard.html",
       "destination": "/dashboard",
       "permanent": true
