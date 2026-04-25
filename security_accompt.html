@@ -3,288 +3,233 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Security_accompt</title>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2473683492413793"
-     crossorigin="anonymous"></script>
+    <title>Securite du Compte - LA CELLULE</title>
+    <link rel="icon" type="image/jpeg" href="images/logo_favicon/Logo_Matdeff.JPG">
+    <link rel="shortcut icon" href="images/logo_favicon/Logo_Matdeff.JPG">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="landing-style.css">
+    <script src="app.js" defer></script>
+    <script src="images/logo_favicon/logo_manager.js" defer></script>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #f5f5f5;
+            margin: 0;
         }
-          .top-nav {
-               background-color: #ffffff;
-               border-radius: 8px;
-               box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-               padding: 12px;
-               margin-bottom: 20px;
-          }
-          .top-nav ul {
-               display: flex;
-               flex-wrap: wrap;
-               gap: 10px;
-               list-style: none;
-               margin: 0;
-               padding: 0;
-          }
-          .top-nav a {
-               display: inline-block;
-               text-decoration: none;
-               color: #1f2937;
-               background-color: #eef2f7;
-               padding: 8px 12px;
-               border-radius: 6px;
-               font-weight: 600;
-          }
-          .top-nav a:hover {
-               background-color: #dce6f3;
-          }
-        h1 {
-            text-align: center;
-            color: #333;
+
+        .security-page {
+            min-height: 100vh;
         }
+
+        .security-shell {
+            padding-top: 2rem;
+        }
+
+        .security-hero {
+            display: grid;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .security-intro {
+            background: linear-gradient(145deg, rgba(225, 6, 0, 0.1), rgba(255, 255, 255, 0.98));
+            border: 1px solid rgba(225, 6, 0, 0.12);
+            border-radius: 1.5rem;
+            box-shadow: var(--shadow-medium);
+            padding: clamp(1.4rem, 3vw, 2rem);
+        }
+
+        .security-intro h2 {
+            margin-bottom: 0.75rem;
+        }
+
+        .security-intro p {
+            max-width: 70ch;
+            margin-bottom: 0;
+        }
+
+        .security-pillars {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1rem;
+        }
+
+        .security-pillar {
+            background: rgba(255, 255, 255, 0.96);
+            border: 1px solid rgba(9, 9, 9, 0.08);
+            border-radius: 1.2rem;
+            padding: 1.2rem;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .security-pillar h3 {
+            margin-bottom: 0.55rem;
+            font-size: 1rem;
+        }
+
         .ad-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            margin-top: 30px;
+            gap: 1.25rem;
+            margin-top: 1rem;
         }
+
         .ad-slot {
-            background-color: white;
-            padding: 10px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            background: rgba(255, 255, 255, 0.98);
+            padding: 1rem;
+            border-radius: 1.2rem;
+            box-shadow: var(--shadow-soft);
+            border: 1px solid rgba(9, 9, 9, 0.08);
         }
-        .ad-display-block {
-            display: block;
+
+        .ad-slot p {
+            margin-bottom: 0.9rem;
+            color: var(--gray-600);
+        }
+
+        .security-footer-note {
+            margin-top: 2rem;
+            text-align: center;
+            color: var(--gray-600);
+        }
+
+        @media (max-width: 820px) {
+            .security-shell {
+                padding-top: 1rem;
+            }
         }
     </style>
 </head>
-<body>
-     <header class="top-nav" aria-label="Navigation principale">
-          <ul>
-               <li><a href="/">Accueil</a></li>
-               <li><a href="dashboard.html">Dashboard</a></li>
-               <li><a href="cours.html">Cours</a></li>
-               <li><a href="outils.html">Outils</a></li>
-               <li><a href="security_accompt.html">Security</a></li>
-          </ul>
-     </header>
+<body class="user-area security-page">
+    <nav class="navbar">
+        <div class="navbar-container">
+            <h1 class="logo">LA CELLULE</h1>
+            <div class="nav-menu" id="navMenu">
+                <a href="dashboard.html" class="nav-link">Dashboard</a>
+                <a href="cours.html" class="nav-link">Cours</a>
+                <a href="ressources.html" class="nav-link">Ressources</a>
+                <a href="supports.html" class="nav-link">Supports</a>
+                <a href="statistiques.html" class="nav-link">Statistiques</a>
+                <a href="parametres.html" class="nav-link">Paramètres</a>
+                <a href="outils.html" class="nav-link">Outils</a>
+                <a href="security_accompt.html" class="nav-link nav-link-active">Security</a>
+                <a href="/" class="nav-link nav-link-home">Accueil public</a>
+            </div>
+            <button class="hamburger" id="hamburger" type="button" aria-label="Ouvrir le menu" aria-controls="navMenu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
 
-    <h1>Security Account et partenaires</h1>
-    
-    <div class="ad-container">
-        <div class="ad-slot">
-            <ins class="adsbygoogle ad-display-block"
-                 data-ad-client="ca-pub-2473683492413793"
-                 data-ad-slot="xxxxxxxxxx"
-                 data-ad-format="auto"
-                 data-full-width-responsive="true"></ins>
-            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2473683492413793"
-                    crossorigin="anonymous"></script>
-               <!-- Display_pub_google -->
-               <ins class="adsbygoogle"
-                    style="display:block"
-                    data-ad-client="ca-pub-2473683492413793"
-                    data-ad-slot="7836626597"
-                    data-ad-format="auto"
-                    data-full-width-responsive="true"></ins>
-               <script>
-                    (adsbygoogle = window.adsbygoogle || []).push({});
-               </script>
-        </div>
-        
-        <div class="ad-slot">
-            <ins class="adsbygoogle ad-display-block"
-                 data-ad-client="ca-pub-2473683492413793"
-                 data-ad-slot="xxxxxxxxxx"
-                 data-ad-format="auto"
-                 data-full-width-responsive="true"></ins>
-            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2473683492413793"
-                    crossorigin="anonymous"></script>
-               <!-- Display_pub_google -->
-               <ins class="adsbygoogle"
-                    style="display:block"
-                    data-ad-client="ca-pub-2473683492413793"
-                    data-ad-slot="7836626597"
-                    data-ad-format="auto"
-                    data-full-width-responsive="true"></ins>
-               <script>
-                    (adsbygoogle = window.adsbygoogle || []).push({});
-               </script>
-        </div>
-        
-        <div class="ad-slot">
-            <ins class="adsbygoogle ad-display-block"
-                 data-ad-client="ca-pub-2473683492413793"
-                 data-ad-slot="xxxxxxxxxx"
-                 data-ad-format="auto"
-                 data-full-width-responsive="true"></ins>
-            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2473683492413793"
-                    crossorigin="anonymous"></script>
-               <!-- Display_pub_google -->
-               <ins class="adsbygoogle"
-                    style="display:block"
-                    data-ad-client="ca-pub-2473683492413793"
-                    data-ad-slot="7836626597"
-                    data-ad-format="auto"
-                    data-full-width-responsive="true"></ins>
-               <script>
-                    (adsbygoogle = window.adsbygoogle || []).push({});
-               </script>
-        </div>
-        
-        <div class="ad-slot">
-            <ins class="adsbygoogle ad-display-block"
-                 data-ad-client="ca-pub-2473683492413793"
-                 data-ad-slot="xxxxxxxxxx"
-                 data-ad-format="auto"
-                 data-full-width-responsive="true"></ins>
-          <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2473683492413793"
-                    crossorigin="anonymous"></script>
-               <!-- Display_pub_google -->
-               <ins class="adsbygoogle"
-                    style="display:block"
-                    data-ad-client="ca-pub-2473683492413793"
-                    data-ad-slot="7836626597"
-                    data-ad-format="auto"
-                    data-full-width-responsive="true"></ins>
-               <script>
-               (adsbygoogle = window.adsbygoogle || []).push({});
-          </script>
-        </div>
-        
-        <div class="ad-slot">
-            <ins class="adsbygoogle ad-display-block"
-                 data-ad-client="ca-pub-2473683492413793"
-                 data-ad-slot="xxxxxxxxxx"
-                 data-ad-format="auto"
-                 data-full-width-responsive="true"></ins>
-           <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2473683492413793"
-                    crossorigin="anonymous"></script>
-               <!-- Display_pub_google -->
-               <ins class="adsbygoogle"
-                    style="display:block"
-                    data-ad-client="ca-pub-2473683492413793"
-                    data-ad-slot="7836626597"
-                    data-ad-format="auto"
-                    data-full-width-responsive="true"></ins>
-               <script>
-                    (adsbygoogle = window.adsbygoogle || []).push({});
-               </script>
-        </div>
-        
-        <div class="ad-slot">
-            <ins class="adsbygoogle ad-display-block"
-                 data-ad-client="ca-pub-2473683492413793"
-                 data-ad-slot="xxxxxxxxxx"
-                 data-ad-format="auto"
-                 data-full-width-responsive="true"></ins>
-            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2473683492413793"
-                    crossorigin="anonymous"></script>
-               <!-- Display_pub_google -->
-               <ins class="adsbygoogle"
-                    style="display:block"
-                    data-ad-client="ca-pub-2473683492413793"
-                    data-ad-slot="7836626597"
-                    data-ad-format="auto"
-                    data-full-width-responsive="true"></ins>
-               <script>
-                    (adsbygoogle = window.adsbygoogle || []).push({});
-               </script>
-        </div>
-        
-        <div class="ad-slot">
-            <ins class="adsbygoogle ad-display-block"
-                 data-ad-client="ca-pub-2473683492413793"
-                 data-ad-slot="xxxxxxxxxx"
-                 data-ad-format="auto"
-                 data-full-width-responsive="true"></ins>
-            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2473683492413793"
-                    crossorigin="anonymous"></script>
-               <!-- Display_pub_google -->
-               <ins class="adsbygoogle"
-                    style="display:block"
-                    data-ad-client="ca-pub-2473683492413793"
-                    data-ad-slot="7836626597"
-                    data-ad-format="auto"
-                    data-full-width-responsive="true"></ins>
-               <script>
-                    (adsbygoogle = window.adsbygoogle || []).push({});
-               </script>
-        </div>
-        
-        <div class="ad-slot">
-            <ins class="adsbygoogle ad-display-block"
-                 data-ad-client="ca-pub-2473683492413793"
-                 data-ad-slot="xxxxxxxxxx"
-                 data-ad-format="auto"
-                 data-full-width-responsive="true"></ins>
-            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2473683492413793"
-                    crossorigin="anonymous"></script>
-               <!-- Display_pub_google -->
-               <ins class="adsbygoogle"
-                    style="display:block"
-                    data-ad-client="ca-pub-2473683492413793"
-                    data-ad-slot="7836626597"
-                    data-ad-format="auto"
-                    data-full-width-responsive="true"></ins>
-               <script>
-                    (adsbygoogle = window.adsbygoogle || []).push({});
-               </script>
-        </div>
-        
-        <div class="ad-slot">
-            <ins class="adsbygoogle ad-display-block"
-                 data-ad-client="ca-pub-2473683492413793"
-                 data-ad-slot="xxxxxxxxxx"
-                 data-ad-format="auto"
-                 data-full-width-responsive="true"></ins>
-           <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2473683492413793"
-                    crossorigin="anonymous"></script>
-               <!-- Display_pub_google -->
-               <ins class="adsbygoogle"
-                    style="display:block"
-                    data-ad-client="ca-pub-2473683492413793"
-                    data-ad-slot="7836626597"
-                    data-ad-format="auto"
-                    data-full-width-responsive="true"></ins>
-               <script>
-                    (adsbygoogle = window.adsbygoogle || []).push({});
-               </script>
-        </div>
-        
-        <div class="ad-slot">
-            <ins class="adsbygoogle ad-display-block"
-                 data-ad-client="ca-pub-2473683492413793"
-                 data-ad-slot="xxxxxxxxxx"
-                 data-ad-format="auto"
-                 data-full-width-responsive="true"></ins>
-            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2473683492413793"
-                    crossorigin="anonymous"></script>
-               <!-- Display_pub_google -->
-               <ins class="adsbygoogle"
-                    style="display:block"
-                    data-ad-client="ca-pub-2473683492413793"
-                    data-ad-slot="7836626597"
-                    data-ad-format="auto"
-                    data-full-width-responsive="true"></ins>
-               <script>
-                    (adsbygoogle = window.adsbygoogle || []).push({});
-               </script>
-        </div>
-    </div>
+    <main class="dashboard-container user-page-shell security-shell">
+        <header class="dashboard-header security-hero">
+            <div class="security-intro">
+                <p class="section-kicker">Protection et conformite</p>
+                <h2>Securite du compte et partenaires de confiance</h2>
+                <p>Cette page centralise les emplacements publicitaires autorises et rappelle les points de vigilance relies a la securite du compte, au respect des donnees personnelles et a la transparence publicitaire.</p>
+            </div>
+            <div class="security-pillars">
+                <article class="security-pillar">
+                    <h3>Connexion securisee</h3>
+                    <p>Utilisez un mot de passe unique, activez vos controles de session et surveillez les acces inhabituels.</p>
+                </article>
+                <article class="security-pillar">
+                    <h3>Partenaires verifiés</h3>
+                    <p>Les integrations publicitaires visibles ici s'appuient sur des emplacements declares et sur le recueil du consentement cookies.</p>
+                </article>
+                <article class="security-pillar">
+                    <h3>Conformite RGPD</h3>
+                    <p>Les liens legaux et les preferences cookies restent accessibles depuis le footer sur l'ensemble du site.</p>
+                </article>
+            </div>
+        </header>
 
-     <footer class="top-nav" aria-label="Liens juridiques">
-          <ul>
-               <li><a href="mentions-legales.html">Mentions légales</a></li>
-               <li><a href="politique-confidentialite.html">Confidentialité</a></li>
-               <li><a href="rgpd.html">RGPD</a></li>
-               <li><a href="conditions-utilisation.html">Conditions</a></li>
-               <li><a href="politique-cookies.html">Cookies</a></li>
-          </ul>
-     </footer>
+        <section aria-labelledby="security-ads-title">
+            <div class="dashboard-header">
+                <h2 id="security-ads-title">Espaces publicitaires declares</h2>
+                <p>Les emplacements ci-dessous s'initialisent uniquement apres acceptation du consentement publicitaire.</p>
+            </div>
+            <div class="ad-container">
+        <div class="ad-slot">
+            <p>Emplacement publicitaire 1</p>
+            <ins class="adsbygoogle ad-display-block"
+                 data-ad-client="ca-pub-2473683492413793"
+                 data-ad-slot="7836626597"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+        </div>
+        <div class="ad-slot">
+            <p>Emplacement publicitaire 2</p>
+            <ins class="adsbygoogle ad-display-block"
+                 data-ad-client="ca-pub-2473683492413793"
+                 data-ad-slot="7836626597"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+        </div>
+        <div class="ad-slot">
+            <p>Emplacement publicitaire 3</p>
+            <ins class="adsbygoogle ad-display-block"
+                 data-ad-client="ca-pub-2473683492413793"
+                 data-ad-slot="7836626597"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+        </div>
+        <div class="ad-slot">
+            <p>Emplacement publicitaire 4</p>
+            <ins class="adsbygoogle ad-display-block"
+                 data-ad-client="ca-pub-2473683492413793"
+                 data-ad-slot="7836626597"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+        </div>
+        <div class="ad-slot">
+            <p>Emplacement publicitaire 5</p>
+            <ins class="adsbygoogle ad-display-block"
+                 data-ad-client="ca-pub-2473683492413793"
+                 data-ad-slot="7836626597"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+        </div>
+        <div class="ad-slot">
+            <p>Emplacement publicitaire 6</p>
+            <ins class="adsbygoogle ad-display-block"
+                 data-ad-client="ca-pub-2473683492413793"
+                 data-ad-slot="7836626597"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+        </div>
+        <div class="ad-slot">
+            <p>Emplacement publicitaire 7</p>
+            <ins class="adsbygoogle ad-display-block"
+                 data-ad-client="ca-pub-2473683492413793"
+                 data-ad-slot="7836626597"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+        </div>
+        <div class="ad-slot">
+            <p>Emplacement publicitaire 8</p>
+            <ins class="adsbygoogle ad-display-block"
+                 data-ad-client="ca-pub-2473683492413793"
+                 data-ad-slot="7836626597"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+        </div>
+            </div>
+            <p class="security-footer-note">Les annonces ne sont chargees qu'apres consentement. Vous pouvez gerer ce choix depuis le footer du site.</p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2026 La Cellule. Tous droits réservés.</p>
+        <div class="footer-links">
+            <a href="mentions-legales.html" class="footer-link">Mentions légales</a>
+            <a href="politique-confidentialite.html" class="footer-link">Politique de confidentialité</a>
+            <a href="rgpd.html" class="footer-link">RGPD</a>
+            <a href="conditions-utilisation.html" class="footer-link">Conditions d’utilisation</a>
+            <a href="politique-cookies.html" class="footer-link">Cookies et publicité</a>
+        </div>
+    </footer>
 </body>
 </html>

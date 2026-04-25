@@ -10,9 +10,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="landing-style.css">
+    <script src="app.js" defer></script>
     <script src="images/logo_favicon/logo_manager.js" defer></script>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2473683492413793"
-     crossorigin="anonymous"></script>
 </head>
 <body>
     <!-- Navigation -->
@@ -130,26 +129,6 @@
 
     <script type="module">
         import { signUpWithEmail } from './js/auth.js';
-
-        // Menu burger toggle
-        const hamburger = document.getElementById('hamburger');
-        const navMenu = document.getElementById('navMenu');
-
-        if (hamburger) {
-            hamburger.addEventListener('click', function() {
-                navMenu.classList.toggle('active');
-                hamburger.classList.toggle('active');
-            });
-        }
-
-        // Fermer le menu quand on clique sur un lien
-        const navLinks = document.querySelectorAll('.nav-link');
-        navLinks.forEach(link => {
-            link.addEventListener('click', function() {
-                navMenu.classList.remove('active');
-                hamburger.classList.remove('active');
-            });
-        });
 
         function setStatus(message, isError) {
             const status = document.getElementById('signup-status');

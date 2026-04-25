@@ -3,12 +3,261 @@
  * Fonctionnalités interactives et animations avancées
  */
 
+const COOKIE_CONSENT_KEY = 'lacellule_cookie_consent';
+const COOKIE_CONSENT_VERSION = 1;
+const COOKIE_CONSENT_ACCEPTED = 'accepted';
+const COOKIE_CONSENT_REJECTED = 'rejected';
+const ADSENSE_SCRIPT_SRC = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2473683492413793';
+
+class CookieConsentManager {
+    constructor() {
+        this.bannerId = 'cookie-consent-banner';
+        this.storageKey = COOKIE_CONSENT_KEY;
+        this.preference = this.readPreference();
+        this.adsLoadPromise = null;
+        this.adsInitialized = false;
+    }
+
+    init() {
+        this.ensureBanner();
+        this.ensureManageLinks();
+        this.bindEvents();
+        this.syncBannerVisibility();
+
+        if (this.hasAcceptedConsent()) {
+            this.loadAdsIfConsented();
+        }
+    }
+
+    readPreference() {
+        try {
+            const rawValue = window.localStorage.getItem(this.storageKey);
+            if (!rawValue) {
+                return null;
+            }
+
+            const parsedValue = JSON.parse(rawValue);
+            if (!parsedValue || parsedValue.version !== COOKIE_CONSENT_VERSION) {
+                return null;
+            }
+
+            if (![COOKIE_CONSENT_ACCEPTED, COOKIE_CONSENT_REJECTED].includes(parsedValue.status)) {
+                return null;
+            }
+
+            return parsedValue;
+        } catch (error) {
+            console.warn('Impossible de lire la preference cookies:', error);
+            return null;
+        }
+    }
+
+    hasStoredChoice() {
+        return Boolean(this.preference?.status);
+    }
+
+    hasAcceptedConsent() {
+        return this.preference?.status === COOKIE_CONSENT_ACCEPTED;
+    }
+
+    savePreference(status) {
+        this.preference = {
+            version: COOKIE_CONSENT_VERSION,
+            status,
+            updatedAt: new Date().toISOString()
+        };
+
+        window.localStorage.setItem(this.storageKey, JSON.stringify(this.preference));
+        document.body.dataset.cookieConsent = status;
+    }
+
+    ensureBanner() {
+        if (document.getElementById(this.bannerId)) {
+            return;
+        }
+
+        const banner = document.createElement('aside');
+        banner.id = this.bannerId;
+        banner.className = 'cookie-consent-banner';
+        banner.setAttribute('role', 'dialog');
+        banner.setAttribute('aria-live', 'polite');
+        banner.setAttribute('aria-label', 'Gestion du consentement cookies');
+        banner.innerHTML = `
+            <div class="cookie-consent-banner__content">
+                <p class="cookie-consent-banner__eyebrow">Cookies et publicite</p>
+                <p class="cookie-consent-banner__text">
+                    Nous utilisons uniquement les cookies necessaires par defaut. Les cookies publicitaires et autres traceurs non essentiels ne sont actives qu'apres votre accord.
+                    <a href="politique-cookies.html">Politique cookies</a>,
+                    <a href="politique-confidentialite.html">Politique de confidentialite</a>,
+                    <a href="conditions-utilisation.html">Conditions d'utilisation</a>.
+                </p>
+            </div>
+            <div class="cookie-consent-banner__actions">
+                <button type="button" class="cookie-consent-banner__button cookie-consent-banner__button--secondary" data-cookie-action="reject">Refuser</button>
+                <button type="button" class="cookie-consent-banner__button" data-cookie-action="accept">Accepter</button>
+            </div>
+        `;
+
+        document.body.appendChild(banner);
+    }
+
+    ensureManageLinks() {
+        const footerLinks = document.querySelectorAll('.footer-links');
+        if (footerLinks.length > 0) {
+            footerLinks.forEach((container) => {
+                if (container.querySelector('[data-cookie-action="manage"]')) {
+                    return;
+                }
+
+                const button = document.createElement('button');
+                button.type = 'button';
+                button.className = 'footer-link footer-link-button';
+                button.dataset.cookieAction = 'manage';
+                button.textContent = 'Gerer mes cookies';
+                container.appendChild(button);
+            });
+            return;
+        }
+
+        if (!document.querySelector('.cookie-consent-manage-fallback')) {
+            const button = document.createElement('button');
+            button.type = 'button';
+            button.className = 'cookie-consent-manage-fallback';
+            button.dataset.cookieAction = 'manage';
+            button.textContent = 'Gerer mes cookies';
+            document.body.appendChild(button);
+        }
+    }
+
+    bindEvents() {
+        document.addEventListener('click', (event) => {
+            const actionTrigger = event.target.closest('[data-cookie-action]');
+            if (!actionTrigger) {
+                return;
+            }
+
+            const { cookieAction } = actionTrigger.dataset;
+            if (cookieAction === 'accept') {
+                this.accept();
+            }
+
+            if (cookieAction === 'reject') {
+                this.reject();
+            }
+
+            if (cookieAction === 'manage') {
+                this.openBanner();
+            }
+        });
+    }
+
+    accept() {
+        this.savePreference(COOKIE_CONSENT_ACCEPTED);
+        this.syncBannerVisibility();
+        this.loadAdsIfConsented();
+    }
+
+    reject() {
+        const hadAcceptedConsent = this.hasAcceptedConsent();
+        this.savePreference(COOKIE_CONSENT_REJECTED);
+        this.syncBannerVisibility();
+
+        if (hadAcceptedConsent) {
+            window.location.reload();
+        }
+    }
+
+    openBanner() {
+        const banner = document.getElementById(this.bannerId);
+        if (!banner) {
+            return;
+        }
+
+        banner.classList.remove('cookie-consent-banner--hidden');
+        banner.querySelector('[data-cookie-action="reject"]')?.focus();
+    }
+
+    syncBannerVisibility() {
+        const banner = document.getElementById(this.bannerId);
+        if (!banner) {
+            return;
+        }
+
+        document.body.dataset.cookieConsent = this.preference?.status || 'pending';
+
+        if (this.hasStoredChoice()) {
+            banner.classList.add('cookie-consent-banner--hidden');
+            return;
+        }
+
+        banner.classList.remove('cookie-consent-banner--hidden');
+    }
+
+    async loadAdsIfConsented() {
+        if (!this.hasAcceptedConsent()) {
+            return false;
+        }
+
+        await this.loadAdsScript();
+        this.initializeAdSlots();
+        return true;
+    }
+
+    loadAdsScript() {
+        if (this.adsLoadPromise) {
+            return this.adsLoadPromise;
+        }
+
+        const existingScript = document.querySelector(`script[src="${ADSENSE_SCRIPT_SRC}"]`);
+        if (existingScript) {
+            this.adsLoadPromise = Promise.resolve();
+            return this.adsLoadPromise;
+        }
+
+        this.adsLoadPromise = new Promise((resolve, reject) => {
+            const script = document.createElement('script');
+            script.async = true;
+            script.src = ADSENSE_SCRIPT_SRC;
+            script.crossOrigin = 'anonymous';
+            script.addEventListener('load', () => resolve());
+            script.addEventListener('error', reject);
+            document.head.appendChild(script);
+        });
+
+        return this.adsLoadPromise;
+    }
+
+    initializeAdSlots() {
+        if (this.adsInitialized && !document.querySelector('.adsbygoogle:not([data-cookie-ad-initialized="true"])')) {
+            return;
+        }
+
+        const slots = document.querySelectorAll('.adsbygoogle');
+        slots.forEach((slot) => {
+            if (slot.dataset.cookieAdInitialized === 'true') {
+                return;
+            }
+
+            try {
+                (window.adsbygoogle = window.adsbygoogle || []).push({});
+                slot.dataset.cookieAdInitialized = 'true';
+            } catch (error) {
+                console.warn('Initialisation pub impossible pour ce slot:', error);
+            }
+        });
+
+        this.adsInitialized = true;
+    }
+}
+
 class LaCelluleWebApp {
     constructor() {
+        this.cookieConsentManager = new CookieConsentManager();
         this.init();
     }
 
     init() {
+        this.cookieConsentManager.init();
         if ('IntersectionObserver' in window) {
             this.setupScrollAnimations();
             this.setupIntersectionObserver();
@@ -47,6 +296,10 @@ class LaCelluleWebApp {
     // Navbar qui change au scroll
     setupNavbarScroll() {
         const navbar = document.querySelector('.navbar');
+        if (!navbar) {
+            return;
+        }
+
         let lastScrollY = window.scrollY;
 
         const handleScroll = () => {
@@ -135,8 +388,9 @@ class LaCelluleWebApp {
         const hamburger = document.querySelector('.hamburger');
         const navMenu = document.querySelector('.nav-menu');
 
-        // Désactivé temporairement
-        if (!hamburger) return;
+        if (!hamburger || !navMenu || hamburger.dataset.mobileMenuBound === 'true') return;
+
+        hamburger.dataset.mobileMenuBound = 'true';
 
         hamburger?.addEventListener('click', () => {
             hamburger.classList.toggle('active');
@@ -385,7 +639,12 @@ class LaCelluleWebApp {
 
 // Initialisation quand le DOM est prêt
 document.addEventListener('DOMContentLoaded', () => {
-    new LaCelluleWebApp();
+    const app = new LaCelluleWebApp();
+    window.LaCelluleCookieConsent = {
+        openManager: () => app.cookieConsentManager.openBanner(),
+        loadAdsIfConsented: () => app.cookieConsentManager.loadAdsIfConsented(),
+        getPreference: () => app.cookieConsentManager.readPreference()
+    };
 });
 
 // Fallback pour les navigateurs qui ne supportent pas IntersectionObserver

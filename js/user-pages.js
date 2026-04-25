@@ -85,9 +85,11 @@ function setupThemePicker() {
 function setupMobileMenu() {
     const hamburger = document.getElementById('hamburger');
     const navMenu = document.getElementById('navMenu');
-    if (!hamburger || !navMenu) {
+    if (!hamburger || !navMenu || hamburger.dataset.mobileMenuBound === 'true') {
         return;
     }
+
+    hamburger.dataset.mobileMenuBound = 'true';
 
     const closeMenu = () => {
         navMenu.classList.remove('active');
