@@ -1,6 +1,6 @@
 # Matdeff Site
 
-Ce dépôt contient le site web de `Matdeff Site`, conçu pour présenter une landing page, un tableau de bord et un formulaire d'inscription. L'application est servie via **Node.js + Express** et expose des routes API pour **Supabase** (auth/membership) et **Stripe** (checkout/webhook).
+Ce dépôt contient le site web de `Matdeff Site`, conçu pour accueillir les programmes de sport et mettre à disposition gratuitement des exercices pour les humains. L'application est servie via **Node.js + Express** et expose des routes API pour **Supabase** (auth/membership) et **Stripe** (checkout/webhook).
 
 ## Structure du projet
 
